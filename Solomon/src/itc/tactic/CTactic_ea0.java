@@ -31,8 +31,14 @@ public class CTactic_ea0 extends CTactic
 	@Override
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
+		double enemyDist = e.getDistance();
 		
-		s.fire(1);
+		double absoluteBearing = getHeadingRadians(s) + e.getBearingRadians();
+		turnGunRightRadians(s,
+		    robocode.util.Utils.normalRelativeAngle(absoluteBearing - 
+		        getGunHeadingRadians(s)));
+
+		fire(s, enemyDist);
 		
 	
 	}
