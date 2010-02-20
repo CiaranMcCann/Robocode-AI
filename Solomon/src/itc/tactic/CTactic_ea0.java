@@ -24,6 +24,7 @@ public class CTactic_ea0 extends CTactic
 	{
 		
 			s.turnRight(180);
+	
 		
 	}
 

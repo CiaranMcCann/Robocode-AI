@@ -60,7 +60,7 @@ public class solomon extends Robot
 			currentTacticIndex = AI.pickTactic(status, currentTacticIndex, tacticLibrary);			
 			healthBeforeTactic = (int) this.getEnergy();
 			
-			while(gameTimer.getSeconds()< 900000)
+			while(gameTimer.getSeconds()< 90000)
 			{
 				tacticLibrary[status][currentTacticIndex].run_(this);
 			}	
