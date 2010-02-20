@@ -62,7 +62,7 @@ public class solomon extends Robot
 			
 			while(gameTimer.getSeconds()< 900000)
 			{
-				tacticLibrary[status][currentTacticIndex].run(this);
+				tacticLibrary[status][currentTacticIndex].run_(this);
 			}	
 			
 			AI.gaugeTactic(healthBeforeTactic, (int)this.getEnergy());

@@ -1,5 +1,5 @@
-package itc;
-
+package itc.tactic;
+import itc.*;
 import java.util.Random;
 
 import robocode.*;
@@ -82,7 +82,7 @@ public class CTactic_d0 extends CTactic
 		// TODO: This can be simplified (probably very easily so it doesn't require a case statement);
 	
 		int bias = 0;
-		switch (s.status;) {
+		switch (s.getStatus()) {
 			case 0 :
 				bias = 400;
 				break;

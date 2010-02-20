@@ -20,7 +20,7 @@ import robocode.*;
 public class CTactic_ea0 extends CTactic 
 {	
 	@Override
-	public void run(solomon s)
+	public void run_(solomon s)
 	{
 		
 			s.turnRight(180);

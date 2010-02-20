@@ -14,7 +14,7 @@ public class CTactic {
 	protected List<Byte> gaugingList  = new ArrayList<Byte>();
 
 	
-	public void run(solomon s)
+	public void run_(solomon s)
 	{
 		
 	}
@@ -56,4 +56,7 @@ public class CTactic {
 		
 		return result;
 	}
+
+
+
 }
