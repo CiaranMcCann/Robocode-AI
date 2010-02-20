@@ -20,24 +20,23 @@ public class CTactic_d0 extends CTactic
 	@Override
 	public void run_(solomon s)
 	{
-		while(true)
-		{
+		
 			if (s.getHeading() % 90 != 0) s.turnLeft(s.getHeading() % 90);
 			if (dir == false)
 			{
-				//s.ahead(Double.POSITIVE_INFINITY);
+				s.ahead(Double.POSITIVE_INFINITY);
 			}
 			else
 			{
-				//s.back(Double.POSITIVE_INFINITY);
+				s.back(Double.POSITIVE_INFINITY);
 			}
 			if (s.getVelocity()==0) s.turnRight(90);
 			
 			s.turnGunRight(360);
-		}
+		
 	}
 
-	@Override
+	@Override    
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
 		double enemyDist = e.getDistance();

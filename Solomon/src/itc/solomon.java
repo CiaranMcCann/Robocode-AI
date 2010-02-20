@@ -1,6 +1,7 @@
 package itc;
 import itc.CTactic;
 import itc.AI;
+import itc.tactic.CTactic_d0;
 import itc.tactic.CTactic_ea0;
 import robocode.*;
 import java.sql.Time;
@@ -40,7 +41,7 @@ public class solomon extends Robot
 		currentTacticIndex = 0;
 		tacticLibrary = new CTactic[3][3];
 		
-		tacticLibrary[0][0] = new CTactic_ea0();
+		tacticLibrary[0][0] = new CTactic_d0();
 		
 		healthBeforeTactic = 0;
 		
@@ -74,7 +75,7 @@ public class solomon extends Robot
 	/**
 	 * onScannedRobot: What to do when you see another robot
 	 */
-	public void onScannedRobot(solomon s, ScannedRobotEvent e) {
+	public void onScannedRobot(ScannedRobotEvent e) {
 		
 		tacticLibrary[status][currentTacticIndex].onScannedRobot_(this, e);
 		
