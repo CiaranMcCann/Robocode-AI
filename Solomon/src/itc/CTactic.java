@@ -31,6 +31,55 @@ public class CTactic {
 		
 	}
 	
+	
+	/**
+	 * Uses the distance of the enemy robot to figure out how
+	 * much energy to expend when firing. If it's close, it
+	 * fires with strength 3, and far away, less.
+	 * 
+	 * @param s
+	 * @param enemyDist
+	 */
+	protected void fire(solomon s, double enemyDist) {
+		// TODO: This can be simplified (probably very easily so it doesn't require a case statement);
+	
+		int bias = 0;
+		switch (s.getStatus()) {
+			case 0 :
+				bias = 400;
+				break;
+			case 1 :
+				bias = 300;
+				break;
+			case 2 :
+				bias = 200;
+				break;
+			case 3 :
+				bias = 100;
+				break;
+			default :
+				break;
+		}
+		
+		double firePower = 0;
+		
+		if (enemyDist > 300)
+		{
+			firePower = 0.1;
+		}
+		else if (enemyDist < 50)
+		{
+			firePower = 3.0;
+		}
+		else
+		{
+			firePower = bias/enemyDist;
+		}
+		
+		s.fire(firePower);
+	}
+	
+	
 	/**
 	 * Calcuates the effecncey of the tactic using the gaugingList
 	 * and returns true and false
@@ -47,7 +96,14 @@ public class CTactic {
 		  sumOfGauging += gaugingList.get(i);
 		}
 		
+		if(sumOfElements != 0)
+		{
 		sumOfGauging = (sumOfGauging/sumOfElements)*100; 
+		}
+		else
+		{
+			sumOfGauging = 100;
+		}
 		
 		if(sumOfGauging < GAUGING_THERSHOLD)
 		{

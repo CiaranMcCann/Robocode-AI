@@ -78,44 +78,7 @@ public class CTactic_d0 extends CTactic
 	 * @param enemyDist
 	 */
 	
-	private void fire(solomon s, double enemyDist) {
-		// TODO: This can be simplified (probably very easily so it doesn't require a case statement);
 	
-		int bias = 0;
-		switch (s.getStatus()) {
-			case 0 :
-				bias = 400;
-				break;
-			case 1 :
-				bias = 300;
-				break;
-			case 2 :
-				bias = 200;
-				break;
-			case 3 :
-				bias = 100;
-				break;
-			default :
-				break;
-		}
-		
-		double firePower = 0;
-		
-		if (enemyDist > 300)
-		{
-			firePower = 0.1;
-		}
-		else if (enemyDist < 50)
-		{
-			firePower = 3.0;
-		}
-		else
-		{
-			firePower = bias/enemyDist;
-		}
-		
-		s.fire(firePower);
-	}
 	
 	@Override
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)

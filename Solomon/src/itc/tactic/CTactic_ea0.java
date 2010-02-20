@@ -38,6 +38,8 @@ public class CTactic_ea0 extends CTactic
 		        getGunHeadingRadians(s)));
 
 		fire(s, enemyDist);
+		
+	
 	}
 	
 	
@@ -55,35 +57,8 @@ public class CTactic_ea0 extends CTactic
 		return (s.getGunHeading() * (Math.PI/180));
 	}
 
-	/**
-	 * Uses the distance of the enemy robot to figure out how
-	 * much energy to expend when firing. If it's close, it
-	 * fires with strength 3, and far away, less.
-	 * 
-	 * @param s
-	 * @param enemyDist
-	 */
-	private void fire(solomon s, double enemyDist) {
-		// TODO: Improve bullet strength modulation.
-		if (enemyDist > 300)
-		{
-			s.fire(0.1);
-		}
-		else if (enemyDist >200)
-		{
-			s.fire(1);
-		}
-		else if (enemyDist >100)
-		{
-			s.fire(2);
-		}
-		else
-		{
-			s.fire(3);
-		}
-		
-	}
-
+	
+	
 	Random r = new Random();
 	
 	@Override

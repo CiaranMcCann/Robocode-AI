@@ -4,7 +4,7 @@ import itc.AI;
 import itc.tactic.CTactic_ea0;
 import robocode.*;
 import java.sql.Time;
-import java.sql.Timestamp;
+
 
 /**
  * Solomon - a robot by (your name here)
