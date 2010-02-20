@@ -29,8 +29,9 @@ public class solomon extends Robot
 	private final int DEFENSIVE = 45;
 	//private final int E_DEFENSIVE = 25;
 	
-	public Time gameTimer = new Time (System.currentTimeMillis()); 
-	public Time gameTimer2 = new Time (System.currentTimeMillis()); 
+	long maxduration = 10000; // 10 seconds.
+	long endtime = 0;
+
 
 	
 	public solomon()
@@ -50,21 +51,21 @@ public class solomon extends Robot
 	 * run: Solomon's default behavior
 	 */
 
-	public void run() {
+	public void run() 
+	{
 						
 		while(true) {
-			
-		
-			
+				
 			status = this.assessHealth();
 			currentTacticIndex = AI.pickTactic(status, currentTacticIndex, tacticLibrary);			
 			healthBeforeTactic = (int) this.getEnergy();
+			endtime = System.currentTimeMillis() + maxduration;
 			
-			while(gameTimer.getSeconds()< 90000)
+			while(System.currentTimeMillis() < endtime)
 			{
 				tacticLibrary[status][currentTacticIndex].run_(this);
 			}	
-			
+			endtime = System.currentTimeMillis() + maxduration;
 			AI.gaugeTactic(healthBeforeTactic, (int)this.getEnergy());
 			
 		}
