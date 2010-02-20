@@ -1,6 +1,6 @@
 package itc;
-import java.util.*;
 
+import java.util.*;
 import robocode.HitByBulletEvent;
 import robocode.ScannedRobotEvent;
 
@@ -8,8 +8,8 @@ import robocode.ScannedRobotEvent;
 public class CTactic {
 
 	
-	//This is the sucess thershold that a tactic most to be labelled as efftive 
-	protected final byte GAUGING_THERSHOLD = 60; 
+	//This is the sucess threshold that a tactic most to be labelled as effective 
+	protected final byte GAUGING_THRESHOLD = 60; 
 	//protected List gaugingList = new ArrayList();
 	protected List<Byte> gaugingList  = new ArrayList<Byte>();
 
@@ -81,8 +81,8 @@ public class CTactic {
 	
 	
 	/**
-	 * Calcuates the effecncey of the tactic using the gaugingList
-	 * and returns true and false
+	 * Calcuates the efficiency of the tactic using the gaugingList
+	 * and returns true or false
 	 * @return
 	 */
 	public boolean isGoodTactic()
@@ -98,21 +98,18 @@ public class CTactic {
 		
 		if(sumOfElements != 0)
 		{
-		sumOfGauging = (sumOfGauging/sumOfElements)*100; 
+		   sumOfGauging = (sumOfGauging/sumOfElements)*100;
 		}
 		else
 		{
 			sumOfGauging = 100;
 		}
 		
-		if(sumOfGauging < GAUGING_THERSHOLD)
+		if(sumOfGauging < GAUGING_THRESHOLD)
 		{
 			result = true;
 		}
 		
 		return result;
 	}
-
-
-
 }
