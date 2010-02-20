@@ -15,21 +15,15 @@ import robocode.util.*;
 public class CTactic_d0 extends CTactic 
 {	
 	Random r = new Random();
-	boolean dir = false;
 	
 	@Override
 	public void run_(solomon s)
 	{
 		
 			if (s.getHeading() % 90 != 0) s.turnLeft(s.getHeading() % 90);
-			if (dir == false)
-			{
-				s.ahead(Double.POSITIVE_INFINITY);
-			}
-			else
-			{
-				s.back(Double.POSITIVE_INFINITY);
-			}
+			
+			s.ahead(Double.POSITIVE_INFINITY);
+			
 			if (s.getVelocity()==0) s.turnRight(90);
 			
 			s.turnGunRight(360);
@@ -82,13 +76,6 @@ public class CTactic_d0 extends CTactic
 	@Override
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)
 	{
-		if (dir == false)
-		{
-			dir = true;
-		}
-		else
-		{
-			dir = false;
-		}
+		
 	}
 }
