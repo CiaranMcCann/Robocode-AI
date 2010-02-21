@@ -1,4 +1,6 @@
 package itc;
+
+
 import itc.CTactic;
 import itc.AI;
 import itc.tactic.*;
@@ -6,7 +8,7 @@ import robocode.*;
 
 
 /**
- * Solomon - a robot by IT Carlow students Ciarán McCann and Carl Lange.
+ * Solomon - a robot by IT Carlow students Ciar√°n McCann and Carl Lange.
  */
 public class solomon extends Robot
 {
@@ -23,20 +25,22 @@ public class solomon extends Robot
 	private int currentTacticIndex;
 	private CTactic tacticLibrary[][];
 	
-	private int healthBeforeTactic;
+	private double healthBeforeTactic;
 	
 	private final int E_AGGRESSIVE = 85;
 	private final int AGGRESSIVE= 65;
 	private final int DEFENSIVE = 45;
 	//private final int E_DEFENSIVE = 25;
 	
-	long maxduration = 10000; // 10 seconds.
+	long maxduration = 9000; // 10 seconds.
 	long endtime = 0;
 
 
 	
 	public solomon()
 	{
+		
+		//CFile.logInfo("log.txt", "fuck");
 		status = 0;
 		currentTacticIndex = 0;
 		
@@ -64,15 +68,17 @@ public class solomon extends Robot
 				
 			status = this.assessHealth();
 			currentTacticIndex = AI.pickTactic(status, currentTacticIndex, tacticLibrary);			
-			healthBeforeTactic = (int) this.getEnergy();
+			healthBeforeTactic =  this.getEnergy();
 			endtime = System.currentTimeMillis() + maxduration;
 			
 			while(System.currentTimeMillis() < endtime)
 			{
+				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
 			}	
+			System.out.println("energy = " + this.getEnergy());
 			endtime = System.currentTimeMillis() + maxduration;
-			AI.gaugeTactic(healthBeforeTactic, (int)this.getEnergy());
+			tacticLibrary[status][currentTacticIndex].gaugingList.add(AI.gaugeTactic(healthBeforeTactic, this.getEnergy()));
 			
 		}
 	}
@@ -102,7 +108,7 @@ public class solomon extends Robot
 	 */
 	private byte assessHealth()
 	{
-		int health = (int) this.getEnergy();
+		double health =  this.getEnergy();
 		byte status = 0;
 		
 		if(health >= E_AGGRESSIVE)

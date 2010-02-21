@@ -38,12 +38,17 @@ public class AI {
 	{		
 		int currentTactic = 0;		
 		
-		for(int i = 0; i <  tacticLibrary.length; i++)
+		for(int i = 0; i <  tacticLibrary[status].length; i++)
 		{
-			if(tacticLibrary[status][currentTacticIndex].isGoodTactic())
+			if(tacticLibrary[status][currentTacticIndex].isGoodTactic(status))
 			{
+				System.out.println("solomon things tactic = "+ currentTacticIndex + " is good");
 				currentTactic = i;
 				i = tacticLibrary.length;
+			}
+			else
+			{
+				System.out.println("solomon things tactic = "+ currentTacticIndex + " is bad");
 			}
 		}
 							
@@ -58,18 +63,21 @@ public class AI {
 	 * @param currentHealth
 	 * @return
 	 */
-	public static byte gaugeTactic(int healthBefore, int currentHealth)
+	public static byte gaugeTactic(double healthBefore, double currentHealth)
 	{
 		byte tacticGauage = 1;
-		int changeInHealth = 0;
+		double changeInHealth = 0;
 		
-		if(healthBefore < currentHealth)
+		if(healthBefore > currentHealth)
 		{
-			changeInHealth = 100 - ((healthBefore/currentHealth)*100);			
-			if(changeInHealth < 10)
+		
+			changeInHealth = (((healthBefore/currentHealth)*100.0F)-100);	
+			System.out.print("changeInHealth = "+ changeInHealth);
+			if(changeInHealth > 5)
 			{
 				tacticGauage = 0;
 			}
+			
 		}
 	
 		return tacticGauage;
