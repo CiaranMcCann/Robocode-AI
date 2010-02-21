@@ -1,6 +1,5 @@
 package itc.tactic;
 import itc.*;
-import java.util.Random;
 import robocode.*;
 
 

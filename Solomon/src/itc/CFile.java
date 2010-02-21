@@ -1,7 +1,7 @@
 package itc;
 import java.io.*;
 
-import robocode.RobocodeFileOutputStream;
+
 import robocode.RobocodeFileWriter;
 
 public class CFile {

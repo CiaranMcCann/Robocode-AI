@@ -91,11 +91,11 @@ public class CTactic {
 	 * and returns true or false
 	 * @return
 	 */
-	public boolean isGoodTactic()
+	public boolean isGoodTactic(int status)
 	{
 		boolean result = false;
-		int sumOfGauging = 0;		
-		int sumOfElements = gaugingList.size();
+		double sumOfGauging = 0;		
+		double sumOfElements = (double)gaugingList.size();
 		
 		for(int i = 0; i < sumOfElements; i++)
 		{
@@ -111,10 +111,12 @@ public class CTactic {
 			sumOfGauging = 100;
 		}
 		
-		if(sumOfGauging < GAUGING_THRESHOLD)
+		if(sumOfGauging > GAUGING_THRESHOLD)
 		{
 			result = true;
 		}
+		
+		System.out.println("sumOfGauging = " + sumOfGauging);
 		
 		return result;
 	}

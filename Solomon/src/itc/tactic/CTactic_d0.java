@@ -3,7 +3,7 @@ import itc.*;
 import java.util.Random;
 
 import robocode.*;
-import robocode.util.*;
+
 
 /**
  * Defensive tactic.
