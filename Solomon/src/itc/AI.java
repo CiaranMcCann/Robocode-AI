@@ -73,7 +73,7 @@ public class AI {
 		
 			changeInHealth = (((healthBefore/currentHealth)*100.0F)-100);	
 			System.out.print("changeInHealth = "+ changeInHealth);
-			if(changeInHealth > 5)
+			if(changeInHealth > 10)
 			{
 				tacticGauage = 0;
 			}

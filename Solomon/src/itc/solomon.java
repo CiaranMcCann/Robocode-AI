@@ -10,7 +10,7 @@ import robocode.*;
 /**
  * Solomon - a robot by IT Carlow students Ciarán McCann and Carl Lange.
  */
-public class solomon extends Robot
+public class solomon extends AdvancedRobot
 {
 	private byte status;
 	public byte getStatus() 
@@ -76,7 +76,13 @@ public class solomon extends Robot
 				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
 			}	
-			System.out.println("energy = " + this.getEnergy());
+			//System.out.println("energy = " + this.getEnergy());
+			
+			for(int i =0; i < tacticLibrary[status][currentTacticIndex].gaugingList.size(); i++)
+			{
+				System.out.println(tacticLibrary[status][currentTacticIndex].gaugingList.get(i));
+			}
+			
 			endtime = System.currentTimeMillis() + maxduration;
 			tacticLibrary[status][currentTacticIndex].gaugingList.add(AI.gaugeTactic(healthBeforeTactic, this.getEnergy()));
 			
