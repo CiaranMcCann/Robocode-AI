@@ -13,6 +13,7 @@ public class CTactic {
 	//protected List gaugingList = new ArrayList();
 	protected List<Byte> gaugingList  = new ArrayList<Byte>();
 
+	private Random r = new Random();
 	
 	public void run_(solomon s)
 	{
@@ -34,8 +35,10 @@ public class CTactic {
 	
 	/**
 	 * Uses the distance of the enemy robot to figure out how
-	 * much energy to expend when firing. If it's close, it
-	 * fires with strength 3, and far away, less.
+	 * much energy to expend when firing. The bias varies, depending on the
+	 * robot's status. If it's very aggressive, it'll be more likely
+	 * to fire with full strength. If very defensive, it'll almost never
+	 * do that, and so on, so forth.
 	 * 
 	 * @param s
 	 * @param enemyDist
@@ -43,6 +46,7 @@ public class CTactic {
 	protected void fire(solomon s, double enemyDist) {
 		// TODO: This can be simplified (probably very easily so it doesn't require a case statement);
 	
+		// Case statement to pick bias.
 		int bias = 0;
 		switch (s.getStatus()) {
 			case 0 :
@@ -63,13 +67,15 @@ public class CTactic {
 		
 		double firePower = 0;
 		
-		if (enemyDist > 300)
+		// This if statement is so that if the enemy is more than 500 units away, it won't even bother with the bias
+		// or if it's closer than 50 units, it'll go straight to full power.
+		if (enemyDist > 500)
 		{
 			firePower = 0.1;
 		}
 		else if (enemyDist < 50)
 		{
-			firePower = 3.0;
+			firePower = 5.0;
 		}
 		else
 		{
@@ -81,7 +87,7 @@ public class CTactic {
 	
 	
 	/**
-	 * Calcuates the efficiency of the tactic using the gaugingList
+	 * Calculates the efficiency of the tactic using the gaugingList
 	 * and returns true or false
 	 * @return
 	 */
@@ -111,5 +117,31 @@ public class CTactic {
 		}
 		
 		return result;
+	}
+	
+	// Returns a random number.
+	protected double getRandom()
+	{
+		return r.nextDouble();
+	}
+	// Returns a number, between zero and input.
+	protected double getRandom(int n)
+	{
+		return (double)(r.nextInt(n));
+	}
+	
+	// What follows are radian translations of calculations that return degrees. Done for compatability with Math.*;
+	protected void turnGunRightRadians(solomon s, double q) {
+		s.turnGunRight((q/180)*Math.PI);
+	}
+
+	protected double getHeadingRadians(solomon s) 
+	{
+		return (s.getHeading() * (Math.PI/180));
+	}
+	
+	protected double getGunHeadingRadians(solomon s) 
+	{
+		return (s.getGunHeading() * (Math.PI/180));
 	}
 }

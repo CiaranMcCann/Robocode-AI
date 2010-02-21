@@ -5,6 +5,7 @@ import robocode.*;
 
 
 /**
+ * THIS COMMENT IS BULLSHIT. =]
  * (Extrememly?) aggressive tactic.
  * 
  * Rams the opponent, then moves as far away as possible, firing as it retreats.
@@ -39,33 +40,12 @@ public class CTactic_ea0 extends CTactic
 		        getGunHeadingRadians(s)));
 
 		fire(s, enemyDist);
-		
-	
 	}
-	
-	
-	private void turnGunRightRadians(solomon s, double q) {
-		s.turnGunRight((q/180)*Math.PI);
-	}
-
-	private double getHeadingRadians(solomon s) 
-	{
-		return (s.getHeading() * (Math.PI/180));
-	}
-	
-	private double getGunHeadingRadians(solomon s) 
-	{
-		return (s.getGunHeading() * (Math.PI/180));
-	}
-
-	
-	
-	Random r = new Random();
 	
 	@Override
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)
 	{
-		s.turnRight((double)r.nextInt(360));
-		s.ahead((double)r.nextInt(150));
+		s.turnRight(getRandom(360));
+		s.ahead(getRandom(150));
 	}
 }
