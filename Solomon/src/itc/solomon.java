@@ -39,8 +39,6 @@ public class solomon extends AdvancedRobot
 	
 	public solomon()
 	{
-		
-		//CFile.logInfo("log.txt", "fuck");
 		status = 0;
 		currentTacticIndex = 0;
 		
@@ -52,9 +50,7 @@ public class solomon extends AdvancedRobot
 			}
 		}
 		
-		healthBeforeTactic = 0;
-		
-		
+		healthBeforeTactic = 0;		
 	}
 		
 	/**
@@ -62,8 +58,7 @@ public class solomon extends AdvancedRobot
 	 */
 
 	public void run() 
-	{
-						
+	{						
 		while(true) {
 				
 			status = this.assessHealth();
@@ -75,8 +70,10 @@ public class solomon extends AdvancedRobot
 			{
 				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
+				//CFile.logInfo("fuck"); expection 
+				System.out.println("energy = " + this.getEnergy());
 			}	
-			//System.out.println("energy = " + this.getEnergy());
+		
 			
 			for(int i =0; i < tacticLibrary[status][currentTacticIndex].gaugingList.size(); i++)
 			{
@@ -84,8 +81,7 @@ public class solomon extends AdvancedRobot
 			}
 			
 			endtime = System.currentTimeMillis() + maxduration;
-			tacticLibrary[status][currentTacticIndex].gaugingList.add(AI.gaugeTactic(healthBeforeTactic, this.getEnergy()));
-			
+			tacticLibrary[status][currentTacticIndex].gaugingList.add(AI.gaugeTactic(healthBeforeTactic, this.getEnergy()));		
 		}
 	}
 

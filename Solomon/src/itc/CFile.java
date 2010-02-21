@@ -1,7 +1,9 @@
 package itc;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import robocode.*;
+import robocode._AdvancedRobot;
 
 
 public class CFile {
@@ -9,21 +11,15 @@ public class CFile {
 	 
 	static public void logInfo(String info) 
 	{	     
-
-		RobocodeFileWriter in;
-		try {
-			in = new RobocodeFileWriter("log.txt");
-			in.append(info);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-
+		
+	    PrintStream printstream;
+	    printstream = new PrintStream(new RobocodeFileOutputStream(getDataFile("log.txt")));
+        printstream.println("foo");		
 
 	}
 	   
 		
-	  }
+}
 
 	  
 
