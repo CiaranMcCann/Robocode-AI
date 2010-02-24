@@ -8,12 +8,12 @@ import robocode.ScannedRobotEvent;
 public class CTactic {
 
 	
-	//This is the sucess threshold that a tactic most to be labelled as effective 
+	//This is the success threshold that a tactic needs to be labelled as effective 
 	protected final byte GAUGING_THRESHOLD = 60; 
 	//protected List gaugingList = new ArrayList();
 	protected List<Byte> gaugingList  = new ArrayList<Byte>();
 
-	private Random r = new Random();
+	protected Random r = new Random();
 	
 	public void run_(solomon s)
 	{
