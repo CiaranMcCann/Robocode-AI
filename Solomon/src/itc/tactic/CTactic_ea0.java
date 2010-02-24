@@ -22,8 +22,7 @@ public class CTactic_ea0 extends CTactic
 	@Override
 	public void run_(solomon s)
 	{
-		
-			s.turnRight(180);
+		s.turnRight(360);
 	
 		
 	}

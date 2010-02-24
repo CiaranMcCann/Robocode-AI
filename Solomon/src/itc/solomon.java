@@ -1,6 +1,5 @@
 package itc;
 
-
 import itc.CTactic;
 import itc.AI;
 import itc.tactic.*;
@@ -8,9 +7,9 @@ import robocode.*;
 
 
 /**
- * Solomon - a robot by IT Carlow students Ciar√°n McCann and Carl Lange.
+ * Solomon - a robot by IT Carlow students Ciarán McCann and Carl Lange.
  */
-public class solomon extends AdvancedRobot
+public class solomon extends Robot // FIXME: We're not allowed to extend AdvancedRobot. Seems to work fine without it, though.
 {
 	private byte status;
 	public byte getStatus() 
@@ -30,7 +29,7 @@ public class solomon extends AdvancedRobot
 	private final int E_AGGRESSIVE = 85;
 	private final int AGGRESSIVE= 65;
 	private final int DEFENSIVE = 45;
-	//private final int E_DEFENSIVE = 25;
+	//private final int E_DEFENSIVE = 25; // TODO: Either use E_DEFENSIVE or remove it.
 	
 	long maxduration = 9000; // 10 seconds.
 	long endtime = 0;
@@ -42,15 +41,29 @@ public class solomon extends AdvancedRobot
 		status = 0;
 		currentTacticIndex = 0;
 		
+		populateLibrary();
+		
+		healthBeforeTactic = 0;		
+	}
+	
+	/**
+	 * 
+	 */
+	private void populateLibrary() {
 		tacticLibrary = new CTactic[4][4];
+		
+		tacticLibrary[0][0] = new CTactic_ea0();
+		tacticLibrary[1][0] = new CTactic_a0();
+		tacticLibrary[2][0] = new CTactic_d0();
+		tacticLibrary[3][0] = new CTactic_ed0();
 		
 		for (int j = 0; j < tacticLibrary.length; j++) {
 			for (int i = 0; i < tacticLibrary.length; i++) {
-				tacticLibrary[i][j] = new CTactic_d0();
+				if (tacticLibrary[i][j]!=null) {
+					tacticLibrary[i][j] = new CTactic_ed0();
+				}
 			}
 		}
-		
-		healthBeforeTactic = 0;		
 	}
 		
 	/**
@@ -70,7 +83,7 @@ public class solomon extends AdvancedRobot
 			{
 				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
-				//CFile.logInfo("fuck"); expection 
+				//CFile.logInfo("Testing log"); exception
 				System.out.println("energy = " + this.getEnergy());
 			}	
 		
@@ -89,9 +102,7 @@ public class solomon extends AdvancedRobot
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
-		
 		tacticLibrary[status][currentTacticIndex].onScannedRobot_(this, e);
-		
 	}
 
 	/**
@@ -99,12 +110,11 @@ public class solomon extends AdvancedRobot
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		tacticLibrary[status][currentTacticIndex].onHitByBullet_(this, e);
-		
 	}
 	
 	
 	/**
-	 * Assess the health of the solomon and returns a status number
+	 * Assess the health of Solomon and returns a status number
 	 * which will be used as an index in accessing the 2D array of tactics.
 	 * @return
 	 */
@@ -132,6 +142,4 @@ public class solomon extends AdvancedRobot
 		
 		return status;
 	}
-	
-	
 }

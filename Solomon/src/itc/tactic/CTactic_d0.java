@@ -1,6 +1,5 @@
 package itc.tactic;
 import itc.*;
-import java.util.Random;
 
 import robocode.*;
 
@@ -14,8 +13,6 @@ import robocode.*;
 
 public class CTactic_d0 extends CTactic 
 {	
-	Random r = new Random();
-	
 	@Override
 	public void run_(solomon s)
 	{
