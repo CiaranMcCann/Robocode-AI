@@ -9,7 +9,7 @@ import robocode.*;
 /**
  * Solomon - a robot by IT Carlow students Ciaran McCann and Carl Lange.
  */
-public class solomon extends Robot // FIXME: We're not allowed to extend AdvancedRobot. Seems to work fine without it, though.
+public class solomon extends Robot
 {
 	private byte status;
 	public byte getStatus() 
@@ -43,7 +43,7 @@ public class solomon extends Robot // FIXME: We're not allowed to extend Advance
 		
 		populateLibrary();
 		
-		healthBeforeTactic = 0;		
+		healthBeforeTactic = 0;
 	}
 	
 	/**

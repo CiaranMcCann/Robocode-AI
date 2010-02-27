@@ -1,13 +1,12 @@
 package itc.tactic;
 
 import robocode.*;
-import itc.CTactic;
-import itc.solomon;
+import itc.*;
 
 /**
  * This needs documentation and better commenting.
  * TODO: Make this better, damnit.
- * 
+ * FIXME: ed0 doesn't work.
  * @author carllange
  *
  */
@@ -18,21 +17,23 @@ public class CTactic_ed0 extends CTactic {
 	double furthestPossibleDistance = -1;
 	
 	@Override
-	public void run_(solomon s)
-	{
+	public void run_(solomon s) {
 		getFurthestPossibleDistance(s);
 		
-		while (scannedRobotYet == false){
+		while (scannedRobotYet == false) {
 			s.ahead(getRandom());
 			s.turnRight(getRandom(360));
 		}
 		
-		while (scannedRobotYet == true){
-			
+		while (scannedRobotYet == true) {
 			// If distance from enemy isn't within an acceptable margin, move to a spot that is.
-			if (acceptableDist() != true)
-			{
+			if (acceptableDist() != true) {
 				// TODO: move to a better location.
+				// TODO: try the next position, (eg x+10, y+10 or something), and figure out whether the distance there is further.
+				// Even better, x+rand, y+rand.
+			}
+			else {
+				fire(s, enemyDistance);
 			}
 		}
 	}
@@ -44,11 +45,11 @@ public class CTactic_ed0 extends CTactic {
 	}
 
 	@Override
-	public void onScannedRobot_(solomon s, ScannedRobotEvent e){
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e) {
+		// TODO: This needs to be sure that it's only working for enemy AI, rather than sentries.
+		// MAYBE: That should actually be in CTactic, figuring out a target or something...
 		enemyDistance = e.getDistance();
-		
 		scannedRobotYet = true;
-		fire(s, e.getDistance());
 	}
 	
 	private void getFurthestPossibleDistance(solomon s) {
@@ -61,9 +62,7 @@ public class CTactic_ed0 extends CTactic {
 	}
 
 	@Override
-	public void onHitByBullet_(solomon s, HitByBulletEvent e)
-	{
-		s.turnRight(getRandom(360));
-		s.ahead(getRandom(150));
+	public void onHitByBullet_(solomon s, HitByBulletEvent e) {
+		scannedRobotYet = false;
 	}
 }

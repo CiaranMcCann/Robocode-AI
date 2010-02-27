@@ -1,8 +1,7 @@
 package itc;
 
 import java.util.*;
-import robocode.HitByBulletEvent;
-import robocode.ScannedRobotEvent;
+import robocode.*;
 
 
 public class CTactic {
