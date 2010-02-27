@@ -61,7 +61,7 @@ public class solomon extends Robot
 		tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[1][0] = new CTactic_a0();
 		tacticLibrary[2][0] = new CTactic_d0();
-		tacticLibrary[3][0] = new CTactic_d0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
+		tacticLibrary[3][0] = new CTactic_ed0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
 	}
 		
 	/**

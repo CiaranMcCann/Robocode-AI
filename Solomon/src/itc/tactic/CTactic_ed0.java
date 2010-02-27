@@ -16,7 +16,6 @@ public class CTactic_ed0 extends CTactic {
 	double furthestPossibleDistance = -1;
 	
 	
-	
 	@Override
 	public void run_(solomon s) {
 		getFurthestPossibleDistance(s);

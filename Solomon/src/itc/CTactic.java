@@ -92,6 +92,7 @@ public class CTactic {
 	 */
 	public boolean isGoodTactic(int status)
 	{
+		//TODO: Change this in the design doc. Design doc's description is old.
 		boolean result = false;
 		double sumOfGauging = 0;	
 		double sumOfArray = 0;
@@ -135,6 +136,10 @@ public class CTactic {
 	protected void turnGunRightRadians(solomon s, double q) {
 		s.turnGunRight((q/180)*Math.PI);
 	}
+	
+	protected void turnRadarRightRadians(solomon s, double q) {
+		s.turnRadarRight((q/180)*Math.PI);
+	}
 
 	protected double getHeadingRadians(solomon s) 
 	{
@@ -144,5 +149,10 @@ public class CTactic {
 	protected double getGunHeadingRadians(solomon s) 
 	{
 		return (s.getGunHeading() * (Math.PI/180));
+	}
+	
+	protected double getRadarHeadingRadians(solomon s)
+	{
+		return (s.getRadarHeading() * (Math.PI/180));
 	}
 }
