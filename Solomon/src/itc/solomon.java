@@ -7,7 +7,7 @@ import robocode.*;
 
 
 /**
- * Solomon - a robot by IT Carlow students Ciar‡n McCann and Carl Lange.
+ * Solomon - a robot by IT Carlow students Ciaran McCann and Carl Lange.
  */
 public class solomon extends Robot // FIXME: We're not allowed to extend AdvancedRobot. Seems to work fine without it, though.
 {
@@ -29,9 +29,9 @@ public class solomon extends Robot // FIXME: We're not allowed to extend Advance
 	private final int E_AGGRESSIVE = 85;
 	private final int AGGRESSIVE= 65;
 	private final int DEFENSIVE = 45;
-	//private final int E_DEFENSIVE = 25; // TODO: Either use E_DEFENSIVE or remove it.
+	private final int E_DEFENSIVE = 25;
 	
-	long maxduration = 9000; // 10 seconds.
+	long maxduration = 900; // 10 seconds.
 	long endtime = 0;
 
 
@@ -52,18 +52,16 @@ public class solomon extends Robot // FIXME: We're not allowed to extend Advance
 	private void populateLibrary() {
 		tacticLibrary = new CTactic[4][4];
 		
+		for (int j = 0; j < tacticLibrary.length; j++) {
+			for (int i = 0; i < tacticLibrary[j].length; i++) {
+					tacticLibrary[i][j] = new CTactic_ed0();				
+			}
+		}
+				
 		tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[1][0] = new CTactic_a0();
 		tacticLibrary[2][0] = new CTactic_d0();
-		tacticLibrary[3][0] = new CTactic_ed0();
-		
-		for (int j = 0; j < tacticLibrary.length; j++) {
-			for (int i = 0; i < tacticLibrary.length; i++) {
-				if (tacticLibrary[i][j]!=null) {
-					tacticLibrary[i][j] = new CTactic_ed0();
-				}
-			}
-		}
+		tacticLibrary[3][0] = new CTactic_d0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
 	}
 		
 	/**
@@ -135,7 +133,7 @@ public class solomon extends Robot // FIXME: We're not allowed to extend Advance
 		{
 			status = 2;
 		}
-		else // TODO: Finish me here.
+		else if(health <= E_DEFENSIVE)
 		{
 			status = 3;
 		}

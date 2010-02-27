@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import robocode.*;
-import robocode._AdvancedRobot; // TODO: Ohshit, we're not allowed to use AdvancedRobot. Remove me.
 
 
 public class CFile {
