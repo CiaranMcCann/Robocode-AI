@@ -1,7 +1,8 @@
 package itc.tactic;
 
-import robocode.HitByBulletEvent;
-import robocode.ScannedRobotEvent;
+import robocode.*;
+import robocode.util.Utils;
+
 import itc.CTactic;
 import itc.solomon;
 
@@ -14,22 +15,35 @@ public class CTactic_ea1 extends CTactic {
 	{
 		s.turnRadarRight(30.0);
 	
-		s.turnGunLeft(angleToRotateBy);
+	/*	System.out.println("--- " + this.angleToRotateBy +" ------ " + s.getGunHeading());
 		
-		s.fire(1);
+		if(this.angleToRotateBy != s.getGunHeading())
+		{
+		s.turnGunLeft(angleToRotateBy);
+		}
+		*/
+		//s.fire(1);
 			
 	}
 
 	@Override
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
-		 
-		 
-		 //s.setAdjustRadarForRobotTurn(s.getRadarHeading()
-				 
-		System.out.println("e.getBearingRadins = " + this.convertToDegress(e.getBearingRadians()) + "  s.getGunHeading = " + s.getGunHeading());
+		 /*double angle = this.convertToDegress( Math.acos((e.getDistance()/s.getX())));
+		 angleToRotateBy = angle;*/
 		
-		 angleToRotateBy = this.convertToDegress(e.getBearingRadians());
+		 double radarTurn =
+		        getHeadingRadians(s) + e.getBearingRadians()
+		        // Subtract current radar heading to get turn required
+		        - getRadarHeadingRadians(s);
+
+		    s.turnRadarRight(Utils.normalRelativeAngle(radarTurn));
+		    
+		    s.fire(radarTurn);
+		    
+
+		 
+
 	
 	}
 	
