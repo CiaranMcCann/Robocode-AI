@@ -155,4 +155,19 @@ public class CTactic {
 	{
 		return (s.getRadarHeading() * (Math.PI/180));
 	}
+	
+	/**
+	 * Takes in amount in degress and returns it in radians
+	 * @param degrees
+	 * @return
+	 */
+	protected double convertToRadians(double degrees)
+	{
+		return (degrees * (Math.PI/180));
+	}
+	
+	protected double convertToDegress(double radians)
+	{
+		return (radians * (180/Math.PI));
+	}
 }
