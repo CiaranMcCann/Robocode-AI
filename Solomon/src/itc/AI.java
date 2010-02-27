@@ -2,33 +2,33 @@ package itc;
 import itc.CTactic;
 
 /**
- * This class is Solomon's decision making compent.
- * Here it assess the passed expereinces and judges weather
- * the tactic was sucessful in the passed.
+ * This class is Solomon's decision making component.
+ * Here it assesses the past experiences and judges whether
+ * the tactic was successful in the past.
  * @author C00134748
  *
  */
 public class AI {
 
 	/**
-	 * This is the percentage amount of negtive change which
-	 * is require or greater to get a negtive result on the effecncey
+	 * This is the percentage amount of negative change which
+	 * is required or greater to get a negative result on the efficiency
 	 */
-	public static byte gauagingThreshold = 10;
+	public static byte gaugingThreshold = 10;
 	
-	public static byte getGauagingThreshold() {
-		return gauagingThreshold;
+	public static byte getGaugingThreshold() {
+		return gaugingThreshold;
 	}
-	public static void setGauagingThreshold(byte gauagingThreshold) {
+	public static void setGaugingThreshold(byte gaugingThreshold) {
 				
-		AI.gauagingThreshold = gauagingThreshold;
+		AI.gaugingThreshold = gaugingThreshold;
 	}
 	
 	
 	/**
-	 * Picks a tactic for the robot based on the current status its in
+	 * Picks a tactic for the robot based on the current status it's in
 	 * i.e defensive, aggressive etc. It then calls another method isGoodTactic()
-	 * which will find if the tactic as been sucessful in the passed
+	 * which will find if the tactic as been successful in the past
 	 * @param status
 	 * @param currentTacticIndex
 	 * @param tacticLibrary
@@ -58,14 +58,14 @@ public class AI {
 	
 	/**
 	 * Returns a one or a zero based on the health change in the time before
-	 * a tactic was used and after to determin if its a sucessful tactic
+	 * a tactic was used and after to determine if it's a successful tactic
 	 * @param healthBefore
 	 * @param currentHealth
 	 * @return
 	 */
 	public static byte gaugeTactic(double healthBefore, double currentHealth)
 	{
-		byte tacticGauage = 1;
+		byte tacticGauge = 1;
 		double changeInHealth = 0;
 		
 		if(healthBefore > currentHealth)
@@ -75,11 +75,11 @@ public class AI {
 			System.out.print("changeInHealth = "+ changeInHealth);
 			if(changeInHealth > 10)
 			{
-				tacticGauage = 0;
+				tacticGauge = 0;
 			}
 			
 		}
 	
-		return tacticGauage;
+		return tacticGauge;
 	}
 }
