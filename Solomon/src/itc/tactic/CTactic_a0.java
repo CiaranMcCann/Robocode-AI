@@ -53,15 +53,9 @@ public class CTactic_a0 extends CTactic {
 			enemyHeading += enemyHeadingChange;
 			
 			
-			if(	predictedX < 18.0 
-				|| predictedY < 18.0
-				|| predictedX > battleFieldWidth - 18.0
-				|| predictedY > battleFieldHeight - 18.0){
-
-				predictedX = Math.min(Math.max(18.0, predictedX), 
-				    battleFieldWidth - 18.0);	
-				predictedY = Math.min(Math.max(18.0, predictedY), 
-				    battleFieldHeight - 18.0);
+			if(	predictedX < 18.0 || predictedY < 18.0 || predictedX > battleFieldWidth - 18.0 || predictedY > battleFieldHeight - 18.0){
+				predictedX = Math.min(Math.max(18.0, predictedX), battleFieldWidth - 18.0);	
+				predictedY = Math.min(Math.max(18.0, predictedY), battleFieldHeight - 18.0);
 				break;
 			}
 		}

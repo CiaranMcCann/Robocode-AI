@@ -43,7 +43,8 @@ public class CTactic {
 	 * @param enemyDist
 	 */
 	protected void fire(solomon s, double enemyDist) {
-		// TODO: This can be simplified (probably very easily so it doesn't require a case statement);
+		// This can be simplified (probably very easily so it doesn't require a case statement);
+		// Was a todo, but it's waaay on the backburner. Plus this works perfectly.
 	
 		// Case statement to pick bias.
 		int bias = 0;
