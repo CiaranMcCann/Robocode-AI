@@ -14,7 +14,7 @@ public class AI {
 	 * This is the percentage amount of negative change which
 	 * is required or greater to get a negative result on the efficiency
 	 */
-	public static byte gaugingThreshold = 10;
+	public static byte gaugingThreshold = 3;
 	
 	public static byte getGaugingThreshold() {
 		return gaugingThreshold;
@@ -36,22 +36,23 @@ public class AI {
 	 */
 	public static int pickTactic(int status, int currentTacticIndex, CTactic tacticLibrary[][])
 	{		
-		int currentTactic = 0;		
+		int currentTactic = currentTacticIndex;		
 		
 		for(int i = 0; i <  tacticLibrary[status].length; i++)
 		{
-			if(tacticLibrary[status][currentTacticIndex].isGoodTactic(status))
+			if(tacticLibrary[status][currentTactic].isGoodTactic(status))
 			{
-				System.out.println("solomon things tactic = "+ currentTacticIndex + " is good");
 				currentTactic = i;
-				i = tacticLibrary.length;
+				i = tacticLibrary[status].length;
 			}
 			else
 			{
-				System.out.println("solomon things tactic = "+ currentTacticIndex + " is bad");
+				if(currentTactic < (tacticLibrary[status].length-1))
+				{
+				currentTactic++;
+				}				
 			}
-		}
-							
+		}						
 		return currentTactic;
 	}
 	
@@ -69,17 +70,13 @@ public class AI {
 		double changeInHealth = 0;
 		
 		if(healthBefore > currentHealth)
-		{
-		
-			changeInHealth = (((healthBefore/currentHealth)*100.0F)-100);	
-			System.out.print("changeInHealth = "+ changeInHealth);
-			if(changeInHealth > 10)
+		{	
+			changeInHealth = (((healthBefore/currentHealth)*100.0F)-100);
+			if(changeInHealth > gaugingThreshold)
 			{
 				tacticGauge = 0;
-			}
-			
-		}
-	
+			}		
+		}	
 		return tacticGauge;
 	}
 }

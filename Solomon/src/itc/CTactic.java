@@ -8,7 +8,7 @@ public class CTactic {
 
 	
 	//This is the success threshold that a tactic needs to be labelled as effective 
-	protected final byte GAUGING_THRESHOLD = 60; 
+	protected final double GAUGING_THRESHOLD = 0.7; 
 	//protected List gaugingList = new ArrayList();
 	protected List<Byte> gaugingList  = new ArrayList<Byte>();
 
@@ -93,29 +93,29 @@ public class CTactic {
 	public boolean isGoodTactic(int status)
 	{
 		boolean result = false;
-		double sumOfGauging = 0;		
+		double sumOfGauging = 0;	
+		double sumOfArray = 0;
 		double sumOfElements = (double)gaugingList.size();
 		
 		for(int i = 0; i < sumOfElements; i++)
 		{
-		  sumOfGauging += gaugingList.get(i);
+		  sumOfArray += gaugingList.get(i);
 		}
 		
 		if(sumOfElements != 0)
 		{
-		   sumOfGauging = (sumOfGauging/sumOfElements)*100;
+		   sumOfGauging = (sumOfArray/sumOfElements);
+		   System.out.println("sumOfGauging = " + sumOfGauging + " ( " + sumOfArray + " / " + sumOfElements);
 		}
 		else
 		{
-			sumOfGauging = 100;
+			sumOfGauging = 1;
 		}
 		
 		if(sumOfGauging > GAUGING_THRESHOLD)
 		{
 			result = true;
 		}
-		
-		System.out.println("sumOfGauging = " + sumOfGauging);
 		
 		return result;
 	}

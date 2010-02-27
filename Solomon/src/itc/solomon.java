@@ -54,7 +54,7 @@ public class solomon extends Robot
 		
 		for (int j = 0; j < tacticLibrary.length; j++) {
 			for (int i = 0; i < tacticLibrary[j].length; i++) {
-					tacticLibrary[i][j] = new CTactic_ed0();				
+					tacticLibrary[i][j] = new CTactic_d0();	//FIXME: bug in ed0 			
 			}
 		}
 				
@@ -81,7 +81,6 @@ public class solomon extends Robot
 			{
 				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
-				//CFile.logInfo("Testing log"); exception
 				System.out.println("energy = " + this.getEnergy());
 			}	
 		
@@ -123,19 +122,51 @@ public class solomon extends Robot
 		
 		if(health >= E_AGGRESSIVE)
 		{
-			status = 0;
+			if(status == 0)
+			{
+				status = 0;
+			}
+			else
+			{
+				currentTacticIndex = 0;
+				status = 0;
+			}
 		}
 		else if((health >= AGGRESSIVE)&&(health < E_AGGRESSIVE))
 		{
-			status = 1;
+			if(status == 1)
+			{
+				status = 1;
+			}
+			else
+			{
+				currentTacticIndex = 0;
+				status = 1;
+			}
 		}
 		else if((health >= DEFENSIVE)&&(health < AGGRESSIVE))
 		{
-			status = 2;
+			if(status == 2)
+			{
+				status = 2;
+			}
+			else
+			{
+				currentTacticIndex = 0;
+				status = 2;
+			}
 		}
 		else if(health <= E_DEFENSIVE)
 		{
-			status = 3;
+			if(status == 3)
+			{
+				status = 3;
+			}
+			else
+			{
+				currentTacticIndex = 0;
+				status = 3;
+			}
 		}
 		
 		return status;
