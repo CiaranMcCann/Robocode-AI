@@ -5,18 +5,29 @@ import robocode.ScannedRobotEvent;
 import itc.CTactic;
 import itc.solomon;
 import robocode.util.*;
+
+import java.awt.Color;
 import java.awt.geom.*;
 
 public class CTactic_a0 extends CTactic {
+	
+	boolean turnr = false;
+	
 	@Override
 	public void run_(solomon s)
 	{
-		s.turnRight(Double.POSITIVE_INFINITY);	
+		//s.turnRight(360);	
 	}
 
 	@Override
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
+		if (turnr == false)
+		{
+			s.setBodyColor(Color.red);
+		}
+		
+		
 		double bulletPower = Math.min(3.0,s.getEnergy());
 		double myX = s.getX();
 		double myY = s.getY();
@@ -28,16 +39,20 @@ public class CTactic_a0 extends CTactic {
 		double enemyHeadingChange = enemyHeading - oldEnemyHeading;
 		double enemyVelocity = e.getVelocity();
 		double enemyDist = e.getDistance();
-
 		double deltaTime = 0;
 		double battleFieldHeight = s.getBattleFieldHeight(), 
 		       battleFieldWidth = s.getBattleFieldWidth();
 		double predictedX = enemyX, predictedY = enemyY;
+		
+		
 		while((++deltaTime) * (20.0 - 3.0 * bulletPower) < 
-		      Point2D.Double.distance(myX, myY, predictedX, predictedY)){		
+		      
+				Point2D.Double.distance(myX, myY, predictedX, predictedY)){		
 			predictedX += Math.sin(enemyHeading) * enemyVelocity;
 			predictedY += Math.cos(enemyHeading) * enemyVelocity;
 			enemyHeading += enemyHeadingChange;
+			
+			
 			if(	predictedX < 18.0 
 				|| predictedY < 18.0
 				|| predictedX > battleFieldWidth - 18.0
@@ -50,8 +65,8 @@ public class CTactic_a0 extends CTactic {
 				break;
 			}
 		}
-		double theta = Utils.normalAbsoluteAngle(Math.atan2(
-		    predictedX - s.getX(), predictedY - s.getY()));
+		
+		double theta = Utils.normalAbsoluteAngle(Math.atan2(predictedX - s.getX(), predictedY - s.getY()));
 
 		turnRadarRightRadians(s, Utils.normalRelativeAngle(
 		    absoluteBearing - getRadarHeadingRadians(s)));
