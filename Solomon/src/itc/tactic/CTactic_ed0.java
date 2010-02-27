@@ -6,7 +6,6 @@ import itc.*;
 /**
  * This needs documentation and better commenting.
  * TODO: Make this better, damnit.
- * FIXME: ed0 doesn't work.
  * @author carllange
  *
  */
@@ -16,32 +15,58 @@ public class CTactic_ed0 extends CTactic {
 	double enemyDistance = -1;
 	double furthestPossibleDistance = -1;
 	
+	
+	
 	@Override
 	public void run_(solomon s) {
 		getFurthestPossibleDistance(s);
 		
-		while (scannedRobotYet == false) {
-			s.ahead(getRandom());
-			s.turnRight(getRandom(360));
+		if (scannedRobotYet == false) {
+			s.turnGunRight(360);
 		}
 		
 		while (scannedRobotYet == true) {
 			// If distance from enemy isn't within an acceptable margin, move to a spot that is.
+			
 			if (acceptableDist() != true) {
 				// TODO: move to a better location.
 				// TODO: try the next position, (eg x+10, y+10 or something), and figure out whether the distance there is further.
 				// Even better, x+rand, y+rand.
+				
+				if(acceptableDist(nextPosition(s))==true)
+				{
+					// TODO: move
+				}
+				
+				s.turnGunLeft(360);
+				
 			}
 			else {
-				fire(s, enemyDistance);
+				s.turnGunRight(360);
 			}
 		}
 	}
 
-	private boolean acceptableDist() {
+	
+
+	private double nextPosition(solomon s) {
 		// TODO Auto-generated method stub
-		// This could probably be done with bias, and put in CTactic...
+		return -1;
+	}
+	
+	private boolean acceptableDist(double nextPosition) {
+		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	private boolean acceptableDist() {
+		// This could probably be done with bias...
+		boolean n = false;
+		if (enemyDistance > (furthestPossibleDistance/2))
+		{
+			n=true;
+		}
+		return n;
 	}
 
 	@Override
@@ -63,6 +88,6 @@ public class CTactic_ed0 extends CTactic {
 
 	@Override
 	public void onHitByBullet_(solomon s, HitByBulletEvent e) {
-		scannedRobotYet = false;
+		
 	}
 }
