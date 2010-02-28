@@ -117,7 +117,7 @@ public class CTactic {
 		if(sumOfElements != 0)
 		{
 		   sumOfGauging = (sumOfArray/sumOfElements);
-		   System.out.println("sumOfGauging = " + sumOfGauging + " ( " + sumOfArray + " / " + sumOfElements);
+		   //System.out.println("sumOfGauging = " + sumOfGauging + " ( " + sumOfArray + " / " + sumOfElements);
 		}
 		else
 		{

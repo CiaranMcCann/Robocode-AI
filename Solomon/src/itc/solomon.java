@@ -85,11 +85,9 @@ public class solomon extends Robot
 			
 			while(System.currentTimeMillis() < endtime)
 			{
-				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
+				System.out.println("\n\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
-				//System.out.println("energy = " + this.getEnergy());
-			}	
-		
+			}		
 			
 			for(int i =0; i < tacticLibrary[status][currentTacticIndex].gaugingList.size(); i++)
 			{
