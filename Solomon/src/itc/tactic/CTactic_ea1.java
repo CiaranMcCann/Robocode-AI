@@ -4,11 +4,7 @@ import itc.*;
 
 
 
-/**
- * Ultimate Tracker - a robot by Kyle Bahuaud, and maintained by Flemming N. Larsen
- * 
- * Locks onto a robot, moves close, fires when close.
- */
+
 public class CTactic_ea1 extends CTactic {
 	int count = 0; // Keeps track of how long we've
 	// been searching for our target
