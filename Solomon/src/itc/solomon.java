@@ -1,5 +1,7 @@
 package itc;
 
+import java.awt.Color;
+
 import itc.CTactic;
 import itc.AI;
 import itc.tactic.*;
@@ -38,7 +40,6 @@ public class solomon extends Robot
 
 	public solomon()
 	{
-		System.out.print("fffffffffffffffffffffffuuuuuuuuuuuuuuuuuuuuuuuuuu");
 		
 		status = 0;
 		currentTacticIndex = 0;
@@ -72,6 +73,8 @@ public class solomon extends Robot
 
 	public void run() 
 	{
+		this.setColors(Color.black, Color.gray, Color.white);
+		
 		while(true) {
 				
 			status = this.assessHealth();
@@ -81,16 +84,16 @@ public class solomon extends Robot
 			
 			while(System.currentTimeMillis() < endtime)
 			{
-				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
+				//System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
-				System.out.println("energy = " + this.getEnergy());
+				//System.out.println("energy = " + this.getEnergy());
 			}	
 		
-			
+		/*	
 			for(int i =0; i < tacticLibrary[status][currentTacticIndex].gaugingList.size(); i++)
 			{
 				System.out.println(tacticLibrary[status][currentTacticIndex].gaugingList.get(i));
-			}
+			}*/
 			
 			endtime = System.currentTimeMillis() + maxduration;
 			tacticLibrary[status][currentTacticIndex].gaugingList.add(AI.gaugeTactic(healthBeforeTactic, this.getEnergy()));		
