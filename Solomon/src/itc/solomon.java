@@ -65,7 +65,7 @@ public class solomon extends Robot
 		tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[1][0] = new CTactic_a0();
 		tacticLibrary[2][0] = new CTactic_d0();
-		tacticLibrary[3][0] = new CTactic_ed0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
+		tacticLibrary[3][0] = new CTactic_d0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
 	}
 		
 	/**
@@ -86,9 +86,9 @@ public class solomon extends Robot
 			
 			while(System.currentTimeMillis() < endtime)
 			{
-				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
+				//System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
-				System.out.println("energy = " + this.getEnergy());
+				//System.out.println("energy = " + this.getEnergy());
 			}	
 		
 			
