@@ -4,11 +4,7 @@ import robocode.*;
 
 
 /**
- * THIS COMMENT IS BULLSHIT. =]
- * (Extrememly?) aggressive tactic.
- * 
- * Rams the opponent, then moves as far away as possible, firing as it retreats.
- * Then rams the enemy again.
+ * Moves as close as possible, firing as it retreats.
  * Implements linear targeting and bullet strength modulation.
  * 
  * Some open-source code used for linear targeting implementation.
@@ -22,9 +18,9 @@ public class CTactic_ea0 extends CTactic
 	@Override
 	public void run_(solomon s)
 	{
+
+		if (s.getVelocity()==0) s.turnRight(90);
 		s.turnRight(360);
-	
-		
 	}
 
 	@Override
@@ -32,12 +28,13 @@ public class CTactic_ea0 extends CTactic
 	{
 		double enemyDist = e.getDistance();
 		
-		double absoluteBearing = getHeadingRadians(s) + e.getBearingRadians();
-		turnGunRightRadians(s,
-		    robocode.util.Utils.normalRelativeAngle(absoluteBearing - 
-		        getGunHeadingRadians(s)));
-
 		fire(s, enemyDist);
+		
+		double absoluteBearing = getHeadingRadians(s) + e.getBearingRadians();
+		
+		turnRightRadians(s, robocode.util.Utils.normalRelativeAngle(absoluteBearing - getGunHeadingRadians(s)));
+		
+		s.ahead(enemyDist/2);
 	}
 	
 	@Override

@@ -1,5 +1,7 @@
 package itc.tactic;
 
+import java.awt.Color;
+
 import robocode.HitByBulletEvent;
 import robocode.ScannedRobotEvent;
 import itc.CTactic;
@@ -12,6 +14,9 @@ public class CTactic_ea1 extends CTactic {
 	@Override
 	public void run_(solomon s)
 	{
+		s.setColors(Color.red, Color.red, Color.red);
+
+		
 		s.turnRadarRight(30.0);
 	
 		s.turnGunLeft(angleToRotateBy);

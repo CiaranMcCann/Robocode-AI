@@ -57,14 +57,15 @@ public class solomon extends Robot
 		
 		for (int j = 0; j < tacticLibrary.length; j++) {
 			for (int i = 0; i < tacticLibrary[j].length; i++) {
-					tacticLibrary[i][j] = new CTactic_d0();	//FIXME: bug in ed0 			
+					tacticLibrary[i][j] = new CTactic_d0(); 			
 			}
 		}
-				
+		// Uncomment these before committing!		
 		tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[1][0] = new CTactic_a0();
+		tacticLibrary[1][2] = new CTactic_a2();
 		tacticLibrary[2][0] = new CTactic_d0();
-		tacticLibrary[3][0] = new CTactic_ed0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
+		tacticLibrary[3][0] = new CTactic_ed0();
 	}
 		
 	/**
@@ -84,16 +85,16 @@ public class solomon extends Robot
 			
 			while(System.currentTimeMillis() < endtime)
 			{
-				//System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
+				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
 				//System.out.println("energy = " + this.getEnergy());
 			}	
 		
-		/*	
+			
 			for(int i =0; i < tacticLibrary[status][currentTacticIndex].gaugingList.size(); i++)
 			{
 				System.out.println(tacticLibrary[status][currentTacticIndex].gaugingList.get(i));
-			}*/
+			}
 			
 			endtime = System.currentTimeMillis() + maxduration;
 			tacticLibrary[status][currentTacticIndex].gaugingList.add(AI.gaugeTactic(healthBeforeTactic, this.getEnergy()));		
@@ -112,6 +113,13 @@ public class solomon extends Robot
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		tacticLibrary[status][currentTacticIndex].onHitByBullet_(this, e);
+	}
+	
+	/**
+	 * onHitRobot: What to do when you hit another robot.
+	 */
+	public void onHitRobot(HitRobotEvent e) {
+		tacticLibrary[status][currentTacticIndex].onHitRobot_(this, e);
 	}
 	
 	

@@ -5,13 +5,15 @@ import robocode.ScannedRobotEvent;
 import itc.CTactic;
 import itc.solomon;
 import robocode.util.*;
+
+import java.awt.Color;
 import java.awt.geom.*;
 
 public class CTactic_a0 extends CTactic {
 	@Override
 	public void run_(solomon s)
 	{
-		s.turnRight(360);
+		s.setColors(Color.red, Color.red, Color.red);
 	}
 
 	@Override

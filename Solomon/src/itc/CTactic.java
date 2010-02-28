@@ -1,5 +1,6 @@
 package itc;
 
+import java.awt.Color;
 import java.util.*;
 import robocode.*;
 
@@ -16,7 +17,7 @@ public class CTactic {
 	
 	public void run_(solomon s)
 	{
-		
+
 	}
 	
 
@@ -31,6 +32,10 @@ public class CTactic {
 		
 	}
 	
+	public void onHitRobot_(solomon s, HitRobotEvent e)
+	{
+		
+	}
 	
 	/**
 	 * Uses the distance of the enemy robot to figure out how
@@ -67,19 +72,25 @@ public class CTactic {
 		double firePower = 0;
 		
 		// This if statement is so that if the enemy is more than 500 units away, it won't even bother with the bias
-		// or if it's closer than 50 units, it'll go straight to full power.
+		// or if it's closer than 100 units, it'll go straight to full power.
 		if (enemyDist > 500)
 		{
 			firePower = 0.1;
 		}
-		else if (enemyDist < 50)
+		else if (enemyDist < 100)
 		{
+
 			firePower = 5.0;
+			
+			s.fire(firePower);
+			s.fire(firePower);
+			s.fire(firePower);
 		}
 		else
 		{
 			firePower = bias/enemyDist;
 		}
+		
 		
 		s.fire(firePower);
 	}
@@ -133,12 +144,16 @@ public class CTactic {
 	}
 	
 	// What follows are radian translations of calculations that return degrees. Done for compatability with Math.*;
-	protected void turnGunRightRadians(solomon s, double q) {
-		s.turnGunRight((q/180)*Math.PI);
+	protected void turnGunRightRadians(solomon s, double amountToRotateRadians) {
+		s.turnGunRight((amountToRotateRadians/180)*Math.PI);
 	}
 	
-	protected void turnRadarRightRadians(solomon s, double q) {
-		s.turnRadarRight((q/180)*Math.PI);
+	protected void turnRadarRightRadians(solomon s, double amountToRotateRadians) {
+		s.turnRadarRight((amountToRotateRadians/180)*Math.PI);
+	}
+	
+	protected void turnRightRadians(solomon s, double amountToRotateRadians) {
+		s.turnRight((amountToRotateRadians/180)*Math.PI);
 	}
 
 	protected double getHeadingRadians(solomon s) 

@@ -1,5 +1,7 @@
 package itc.tactic;
 
+import java.awt.Color;
+
 import robocode.*;
 import itc.*;
 
@@ -18,6 +20,8 @@ public class CTactic_ed0 extends CTactic {
 	
 	@Override
 	public void run_(solomon s) {
+		s.setColors(Color.red, Color.red, Color.red);
+		
 		getFurthestPossibleDistance(s);
 		
 		if (scannedRobotYet == false) {
