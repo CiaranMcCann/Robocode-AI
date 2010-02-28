@@ -60,6 +60,8 @@ public class CTactic_a0 extends CTactic {
 		
 		
 		fire(s, enemyDist);
+	   
+	   ahead(100);
 	}
 	
 	@Override
