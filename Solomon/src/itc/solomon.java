@@ -1,5 +1,7 @@
 package itc;
 
+import java.awt.Color;
+
 import itc.CTactic;
 import itc.AI;
 import itc.tactic.*;
@@ -38,6 +40,8 @@ public class solomon extends Robot
 	
 	public solomon()
 	{
+		
+		
 		status = 0;
 		currentTacticIndex = 0;
 		
@@ -69,7 +73,10 @@ public class solomon extends Robot
 	 */
 
 	public void run() 
-	{						
+	{					
+
+		setColors(Color.black, Color.darkGray, Color.lightGray);
+		
 		while(true) {
 				
 			status = this.assessHealth();

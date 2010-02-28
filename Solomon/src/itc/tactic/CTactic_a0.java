@@ -6,12 +6,10 @@ import itc.CTactic;
 import itc.solomon;
 import robocode.util.*;
 
-import java.awt.Color;
 import java.awt.geom.*;
 
 public class CTactic_a0 extends CTactic {
 	
-	boolean turnr = false;
 	
 	@Override
 	public void run_(solomon s)
@@ -22,10 +20,6 @@ public class CTactic_a0 extends CTactic {
 	@Override
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
-		if (turnr == false)
-		{
-			s.setBodyColor(Color.red);
-		}
 		
 		
 		double bulletPower = Math.min(3.0,s.getEnergy());
