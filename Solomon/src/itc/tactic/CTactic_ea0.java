@@ -9,7 +9,7 @@ import robocode.*;
  * 
  * Rams the opponent, then moves as far away as possible, firing as it retreats.
  * Then rams the enemy again.
- * Implements linear targeting.
+ * Implements linear targeting and bullet strength modulation.
  * 
  * Some open-source code used for linear targeting implementation.
  * 

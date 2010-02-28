@@ -1,7 +1,5 @@
 package itc;
 
-import java.awt.Color;
-
 import itc.CTactic;
 import itc.AI;
 import itc.tactic.*;
@@ -14,7 +12,7 @@ import robocode.*;
 public class solomon extends Robot
 {
 	private byte status;
-	public byte getStatus() 
+	public byte getStatus()
 	{
 		return status;
 	}
@@ -33,14 +31,14 @@ public class solomon extends Robot
 	private final int DEFENSIVE = 45;
 	private final int E_DEFENSIVE = 25;
 	
-	long maxduration = 900; // 10 seconds.
+	long maxduration = 900; //0.9 seconds
 	long endtime = 0;
 
 
-	
+
 	public solomon()
 	{
-		
+		System.out.print("fffffffffffffffffffffffuuuuuuuuuuuuuuuuuuuuuuuuuu");
 		
 		status = 0;
 		currentTacticIndex = 0;
@@ -65,7 +63,7 @@ public class solomon extends Robot
 		tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[1][0] = new CTactic_a0();
 		tacticLibrary[2][0] = new CTactic_d0();
-		tacticLibrary[3][0] = new CTactic_d0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
+		tacticLibrary[3][0] = new CTactic_ed0();// FIXME: Bug ed0 tactic, cause crash. Chanage to d0 temp		
 	}
 		
 	/**
@@ -73,22 +71,19 @@ public class solomon extends Robot
 	 */
 
 	public void run() 
-	{					
-		//System.out.print("fffffuuuuuuuuuuuuuuuuuuuuu");
-		setColors(Color.black, Color.darkGray, Color.lightGray);
-		
+	{
 		while(true) {
 				
 			status = this.assessHealth();
-			currentTacticIndex = AI.pickTactic(status, currentTacticIndex, tacticLibrary);			
+			currentTacticIndex = AI.pickTactic(status, currentTacticIndex, tacticLibrary);
 			healthBeforeTactic =  this.getEnergy();
 			endtime = System.currentTimeMillis() + maxduration;
 			
 			while(System.currentTimeMillis() < endtime)
 			{
-				//System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
+				System.out.println("\n\n Time now = " + System.currentTimeMillis() + "\n  endtime = " + endtime + "\n [status][currentTactics] = [" + this.status +"]["+this.currentTacticIndex+"]\n\n");
 				tacticLibrary[status][currentTacticIndex].run_(this);
-				//System.out.println("energy = " + this.getEnergy());
+				System.out.println("energy = " + this.getEnergy());
 			}	
 		
 			
