@@ -74,7 +74,7 @@ public class solomon extends Robot
 
 	public void run() 
 	{					
-
+		//System.out.print("fffffuuuuuuuuuuuuuuuuuuuuu");
 		setColors(Color.black, Color.darkGray, Color.lightGray);
 		
 		while(true) {
