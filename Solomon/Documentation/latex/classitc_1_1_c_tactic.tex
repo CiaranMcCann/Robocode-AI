@@ -1,0 +1,236 @@
+\hypertarget{classitc_1_1_c_tactic}{
+\section{itc.CTactic Class Reference}
+\label{classitc_1_1_c_tactic}\index{itc::CTactic@{itc::CTactic}}
+}
+Inheritance diagram for itc.CTactic::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.12676cm]{classitc_1_1_c_tactic}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classitc_1_1_c_tactic_ae5f5c51a6e04d22bc298dbdec4080770}{run\_\-} (\hyperlink{classitc_1_1solomon}{solomon} s)
+\item 
+void \hyperlink{classitc_1_1_c_tactic_a63a5a64ff30293061e37eca71fb77a96}{onScannedRobot\_\-} (\hyperlink{classitc_1_1solomon}{solomon} s, ScannedRobotEvent e)
+\item 
+void \hyperlink{classitc_1_1_c_tactic_a9a8d125f826667459758f2767c3bd957}{onHitByBullet\_\-} (\hyperlink{classitc_1_1solomon}{solomon} s, HitByBulletEvent e)
+\item 
+void \hyperlink{classitc_1_1_c_tactic_a19cf73207948eff2c6db7d90fce8bd55}{onHitRobot\_\-} (\hyperlink{classitc_1_1solomon}{solomon} s, HitRobotEvent e)
+\item 
+boolean \hyperlink{classitc_1_1_c_tactic_aefcf5f13687e17eaa8bf5dd4be3b424b}{isGoodTactic} (int status)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classitc_1_1_c_tactic_a3d4f7c60b5eb048608b96e4c8c8fad24}{fire} (\hyperlink{classitc_1_1solomon}{solomon} s, double enemyDist)
+\item 
+double \hyperlink{classitc_1_1_c_tactic_ae1e7b81085c04b6d03be93dfefec5b0f}{getRandom} ()
+\item 
+double \hyperlink{classitc_1_1_c_tactic_a89a1395008161bfeed448b60a4addc7d}{getRandom} (int highest)
+\item 
+void \hyperlink{classitc_1_1_c_tactic_aadc353c46b7efae5844a1803dff12ce7}{turnGunRightRadians} (\hyperlink{classitc_1_1solomon}{solomon} s, double amountToRotateRadians)
+\item 
+void \hyperlink{classitc_1_1_c_tactic_a93bd30da3b2689b475ab0bdc9220ae77}{turnRadarRightRadians} (\hyperlink{classitc_1_1solomon}{solomon} s, double amountToRotateRadians)
+\item 
+void \hyperlink{classitc_1_1_c_tactic_a6ec9c0ec24314d590adbd737bbf8be35}{turnRightRadians} (\hyperlink{classitc_1_1solomon}{solomon} s, double amountToRotateRadians)
+\item 
+double \hyperlink{classitc_1_1_c_tactic_a8f926b64924184c4dab8a3c5efa5d410}{getHeadingRadians} (\hyperlink{classitc_1_1solomon}{solomon} s)
+\item 
+double \hyperlink{classitc_1_1_c_tactic_a3218f6ba011510c64b12d87bed7adfcb}{getGunHeadingRadians} (\hyperlink{classitc_1_1solomon}{solomon} s)
+\item 
+double \hyperlink{classitc_1_1_c_tactic_a4d8a555f548ee605c6d67de1e262b455}{getRadarHeadingRadians} (\hyperlink{classitc_1_1solomon}{solomon} s)
+\item 
+double \hyperlink{classitc_1_1_c_tactic_a0fb7344f1a8072b2f764f7b76444b89e}{convertToRadians} (double degrees)
+\item 
+double \hyperlink{classitc_1_1_c_tactic_a89700cf4d890854f0c310a82e8f4fb8d}{convertToDegrees} (double radians)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classitc_1_1_c_tactic_a2d99e5b6935acf7476934fac845716d6}{
+final double {\bfseries GAUGING\_\-THRESHOLD} = 0.7}
+\label{classitc_1_1_c_tactic_a2d99e5b6935acf7476934fac845716d6}
+
+\item 
+\hypertarget{classitc_1_1_c_tactic_a1b6717d9d6b74ce9f1d3f8e8fb18adca}{
+List$<$ Byte $>$ {\bfseries gaugingList} = new ArrayList$<$Byte$>$()}
+\label{classitc_1_1_c_tactic_a1b6717d9d6b74ce9f1d3f8e8fb18adca}
+
+\item 
+\hypertarget{classitc_1_1_c_tactic_a1b977fc5aa7714e83dd93c04461c5770}{
+Random {\bfseries r} = new Random()}
+\label{classitc_1_1_c_tactic_a1b977fc5aa7714e83dd93c04461c5770}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classitc_1_1_c_tactic_a89700cf4d890854f0c310a82e8f4fb8d}{
+\index{itc::CTactic@{itc::CTactic}!convertToDegrees@{convertToDegrees}}
+\index{convertToDegrees@{convertToDegrees}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{convertToDegrees}]{\setlength{\rightskip}{0pt plus 5cm}double itc.CTactic.convertToDegrees (double {\em radians})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a89700cf4d890854f0c310a82e8f4fb8d}
+Takes in radians and converts to degrees. 
+\begin{DoxyParams}{Parameters}
+\item[{\em radians}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_a0fb7344f1a8072b2f764f7b76444b89e}{
+\index{itc::CTactic@{itc::CTactic}!convertToRadians@{convertToRadians}}
+\index{convertToRadians@{convertToRadians}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{convertToRadians}]{\setlength{\rightskip}{0pt plus 5cm}double itc.CTactic.convertToRadians (double {\em degrees})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a0fb7344f1a8072b2f764f7b76444b89e}
+Takes in amount in degrees and returns it in radians 
+\begin{DoxyParams}{Parameters}
+\item[{\em degrees}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_a3d4f7c60b5eb048608b96e4c8c8fad24}{
+\index{itc::CTactic@{itc::CTactic}!fire@{fire}}
+\index{fire@{fire}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{fire}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.fire ({\bf solomon} {\em s}, \/  double {\em enemyDist})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a3d4f7c60b5eb048608b96e4c8c8fad24}
+Uses the distance of the enemy robot to figure out how much energy to expend when firing. The bias varies, depending on the robot's status. If it's very aggressive, it'll be more likely to fire with full strength. If very defensive, it'll almost never do that, and so on, so forth.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\item[{\em enemyDist}]\end{DoxyParams}
+\hypertarget{classitc_1_1_c_tactic_a3218f6ba011510c64b12d87bed7adfcb}{
+\index{itc::CTactic@{itc::CTactic}!getGunHeadingRadians@{getGunHeadingRadians}}
+\index{getGunHeadingRadians@{getGunHeadingRadians}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{getGunHeadingRadians}]{\setlength{\rightskip}{0pt plus 5cm}double itc.CTactic.getGunHeadingRadians ({\bf solomon} {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a3218f6ba011510c64b12d87bed7adfcb}
+Gets the gun heading in radians. 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_a8f926b64924184c4dab8a3c5efa5d410}{
+\index{itc::CTactic@{itc::CTactic}!getHeadingRadians@{getHeadingRadians}}
+\index{getHeadingRadians@{getHeadingRadians}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{getHeadingRadians}]{\setlength{\rightskip}{0pt plus 5cm}double itc.CTactic.getHeadingRadians ({\bf solomon} {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a8f926b64924184c4dab8a3c5efa5d410}
+Gets the heading in radians. 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_a4d8a555f548ee605c6d67de1e262b455}{
+\index{itc::CTactic@{itc::CTactic}!getRadarHeadingRadians@{getRadarHeadingRadians}}
+\index{getRadarHeadingRadians@{getRadarHeadingRadians}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{getRadarHeadingRadians}]{\setlength{\rightskip}{0pt plus 5cm}double itc.CTactic.getRadarHeadingRadians ({\bf solomon} {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a4d8a555f548ee605c6d67de1e262b455}
+Gets the radar heading in radians. 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_a89a1395008161bfeed448b60a4addc7d}{
+\index{itc::CTactic@{itc::CTactic}!getRandom@{getRandom}}
+\index{getRandom@{getRandom}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{getRandom}]{\setlength{\rightskip}{0pt plus 5cm}double itc.CTactic.getRandom (int {\em highest})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a89a1395008161bfeed448b60a4addc7d}
+Returns a number, between zero and input. 
+\begin{DoxyParams}{Parameters}
+\item[{\em highest}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_ae1e7b81085c04b6d03be93dfefec5b0f}{
+\index{itc::CTactic@{itc::CTactic}!getRandom@{getRandom}}
+\index{getRandom@{getRandom}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{getRandom}]{\setlength{\rightskip}{0pt plus 5cm}double itc.CTactic.getRandom ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_ae1e7b81085c04b6d03be93dfefec5b0f}
+Returns a random number. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_aefcf5f13687e17eaa8bf5dd4be3b424b}{
+\index{itc::CTactic@{itc::CTactic}!isGoodTactic@{isGoodTactic}}
+\index{isGoodTactic@{isGoodTactic}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{isGoodTactic}]{\setlength{\rightskip}{0pt plus 5cm}boolean itc.CTactic.isGoodTactic (int {\em status})}}
+\label{classitc_1_1_c_tactic_aefcf5f13687e17eaa8bf5dd4be3b424b}
+Calculates the efficiency of the tactic using the gaugingList and returns true or false \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_c_tactic_a9a8d125f826667459758f2767c3bd957}{
+\index{itc::CTactic@{itc::CTactic}!onHitByBullet\_\-@{onHitByBullet\_\-}}
+\index{onHitByBullet\_\-@{onHitByBullet\_\-}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{onHitByBullet\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.onHitByBullet\_\- ({\bf solomon} {\em s}, \/  HitByBulletEvent {\em e})}}
+\label{classitc_1_1_c_tactic_a9a8d125f826667459758f2767c3bd957}
+This should be overwritten by every tactic. 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\item[{\em e}]\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classitc_1_1tactic_1_1_c_tactic__a0_a8911e3200cb13cfab22082c0a718c0b9}{itc.tactic.CTactic\_\-a0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__a2_a774862588c2b010b16e2709d922db24d}{itc.tactic.CTactic\_\-a2}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__d0_a4af101273ae2df9ee3c58641e1b1e422}{itc.tactic.CTactic\_\-d0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__ea0_a66859754a34c07f83a114509a86914cb}{itc.tactic.CTactic\_\-ea0}, and \hyperlink{classitc_1_1tactic_1_1_c_tactic__ed0_ad04cdcbec1998d1c7bee55a9dc959505}{itc.tactic.CTactic\_\-ed0}.\hypertarget{classitc_1_1_c_tactic_a19cf73207948eff2c6db7d90fce8bd55}{
+\index{itc::CTactic@{itc::CTactic}!onHitRobot\_\-@{onHitRobot\_\-}}
+\index{onHitRobot\_\-@{onHitRobot\_\-}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{onHitRobot\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.onHitRobot\_\- ({\bf solomon} {\em s}, \/  HitRobotEvent {\em e})}}
+\label{classitc_1_1_c_tactic_a19cf73207948eff2c6db7d90fce8bd55}
+This should be overwritten by every tactic. 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\item[{\em e}]\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classitc_1_1tactic_1_1_c_tactic__a1_ac61ce5dba31a140581a5f6f2dd74d73b}{itc.tactic.CTactic\_\-a1}, and \hyperlink{classitc_1_1tactic_1_1_c_tactic__ea1_a2eb8e76f5f9f629359436a611b8a09e5}{itc.tactic.CTactic\_\-ea1}.\hypertarget{classitc_1_1_c_tactic_a63a5a64ff30293061e37eca71fb77a96}{
+\index{itc::CTactic@{itc::CTactic}!onScannedRobot\_\-@{onScannedRobot\_\-}}
+\index{onScannedRobot\_\-@{onScannedRobot\_\-}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{onScannedRobot\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.onScannedRobot\_\- ({\bf solomon} {\em s}, \/  ScannedRobotEvent {\em e})}}
+\label{classitc_1_1_c_tactic_a63a5a64ff30293061e37eca71fb77a96}
+This should be overwritten by every tactic. 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\item[{\em e}]\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classitc_1_1tactic_1_1_c_tactic__a0_aea5ad2191ee16822a129eafb37d91779}{itc.tactic.CTactic\_\-a0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__a1_aab5562fb9a1ed47924bdf4c1d6eb10de}{itc.tactic.CTactic\_\-a1}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__a2_a2448157d91e699740cf8a99f99b0c456}{itc.tactic.CTactic\_\-a2}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__d0_a85a50bae05c5e1b1bf7bdc450325ae0e}{itc.tactic.CTactic\_\-d0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__ea0_a64e0ac47db137d34d3c52abbde65917f}{itc.tactic.CTactic\_\-ea0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__ea1_aa483435460b0ee4fabe62e2d46493c7d}{itc.tactic.CTactic\_\-ea1}, and \hyperlink{classitc_1_1tactic_1_1_c_tactic__ed0_aa1b6857853a2bc90fcf4309b39a3907a}{itc.tactic.CTactic\_\-ed0}.\hypertarget{classitc_1_1_c_tactic_ae5f5c51a6e04d22bc298dbdec4080770}{
+\index{itc::CTactic@{itc::CTactic}!run\_\-@{run\_\-}}
+\index{run\_\-@{run\_\-}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{run\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.run\_\- ({\bf solomon} {\em s})}}
+\label{classitc_1_1_c_tactic_ae5f5c51a6e04d22bc298dbdec4080770}
+This should be overwritten by every tactic. 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classitc_1_1tactic_1_1_c_tactic__a0_a7d6f39924f332a7ed8c53820a45d3834}{itc.tactic.CTactic\_\-a0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__a1_a83dba0cef825a91cd2818e3246a77a76}{itc.tactic.CTactic\_\-a1}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__a2_a71e36f42565ca1436eb1ee71f3d94312}{itc.tactic.CTactic\_\-a2}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__d0_a1f8e1863b6d1848867239230dd77b8f8}{itc.tactic.CTactic\_\-d0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__ea0_af5b367f093ebea65ef06b41b03432289}{itc.tactic.CTactic\_\-ea0}, \hyperlink{classitc_1_1tactic_1_1_c_tactic__ea1_ad3c677f7d3fbb5b88ebac50cd465a3cf}{itc.tactic.CTactic\_\-ea1}, and \hyperlink{classitc_1_1tactic_1_1_c_tactic__ed0_aa8db38d3d879327bb337138a8f42a069}{itc.tactic.CTactic\_\-ed0}.\hypertarget{classitc_1_1_c_tactic_aadc353c46b7efae5844a1803dff12ce7}{
+\index{itc::CTactic@{itc::CTactic}!turnGunRightRadians@{turnGunRightRadians}}
+\index{turnGunRightRadians@{turnGunRightRadians}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{turnGunRightRadians}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.turnGunRightRadians ({\bf solomon} {\em s}, \/  double {\em amountToRotateRadians})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_aadc353c46b7efae5844a1803dff12ce7}
+Turns the gun right by the specified number of radians.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\item[{\em amountToRotateRadians}]\end{DoxyParams}
+\hypertarget{classitc_1_1_c_tactic_a93bd30da3b2689b475ab0bdc9220ae77}{
+\index{itc::CTactic@{itc::CTactic}!turnRadarRightRadians@{turnRadarRightRadians}}
+\index{turnRadarRightRadians@{turnRadarRightRadians}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{turnRadarRightRadians}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.turnRadarRightRadians ({\bf solomon} {\em s}, \/  double {\em amountToRotateRadians})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a93bd30da3b2689b475ab0bdc9220ae77}
+Turns the gun right by the specified number of radians.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\item[{\em amountToRotateRadians}]\end{DoxyParams}
+\hypertarget{classitc_1_1_c_tactic_a6ec9c0ec24314d590adbd737bbf8be35}{
+\index{itc::CTactic@{itc::CTactic}!turnRightRadians@{turnRightRadians}}
+\index{turnRightRadians@{turnRightRadians}!itc::CTactic@{itc::CTactic}}
+\subsubsection[{turnRightRadians}]{\setlength{\rightskip}{0pt plus 5cm}void itc.CTactic.turnRightRadians ({\bf solomon} {\em s}, \/  double {\em amountToRotateRadians})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classitc_1_1_c_tactic_a6ec9c0ec24314d590adbd737bbf8be35}
+Turns the whole robot right by the specified number of radians.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]\item[{\em amountToRotateRadians}]\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/Users/carllange/Documents/workspace/Solomon/src/itc/CTactic.java\end{DoxyCompactItemize}

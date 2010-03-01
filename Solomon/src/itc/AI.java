@@ -5,7 +5,7 @@ import itc.CTactic;
  * This class is Solomon's decision making component.
  * Here it assesses the past experiences and judges whether
  * the tactic was successful in the past.
- * @author C00134748
+ * @author Ciaran McCann
  *
  */
 public class AI {

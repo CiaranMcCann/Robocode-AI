@@ -11,7 +11,7 @@
 <div class="navigation" id="top">
   <div class="tabs">
     <ul>
-      <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
     </ul>
   </div>
@@ -40,13 +40,112 @@ Inheritance diagram for itc.tactic.CTactic_a0:</div>
 <p><a href="classitc_1_1tactic_1_1_c_tactic__a0-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d6f39924f332a7ed8c53820a45d3834"></a><!-- doxytag: member="itc::tactic::CTactic_a0::run_" ref="a7d6f39924f332a7ed8c53820a45d3834" args="(solomon s)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>run_</b> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea5ad2191ee16822a129eafb37d91779"></a><!-- doxytag: member="itc::tactic::CTactic_a0::onScannedRobot_" ref="aea5ad2191ee16822a129eafb37d91779" args="(solomon s, ScannedRobotEvent e)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>onScannedRobot_</b> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, ScannedRobotEvent e)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8911e3200cb13cfab22082c0a718c0b9"></a><!-- doxytag: member="itc::tactic::CTactic_a0::onHitByBullet_" ref="a8911e3200cb13cfab22082c0a718c0b9" args="(solomon s, HitByBulletEvent e)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>onHitByBullet_</b> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, HitByBulletEvent e)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1tactic_1_1_c_tactic__a0.html#a7d6f39924f332a7ed8c53820a45d3834">run_</a> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1tactic_1_1_c_tactic__a0.html#aea5ad2191ee16822a129eafb37d91779">onScannedRobot_</a> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, ScannedRobotEvent e)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1tactic_1_1_c_tactic__a0.html#a8911e3200cb13cfab22082c0a718c0b9">onHitByBullet_</a> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, HitByBulletEvent e)</td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a8911e3200cb13cfab22082c0a718c0b9"></a><!-- doxytag: member="itc::tactic::CTactic_a0::onHitByBullet_" ref="a8911e3200cb13cfab22082c0a718c0b9" args="(solomon s, HitByBulletEvent e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.tactic.CTactic_a0.onHitByBullet_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classitc_1_1solomon.html">solomon</a>&nbsp;</td>
+          <td class="paramname"> <em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HitByBulletEvent&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This should be overwritten by every tactic. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classitc_1_1_c_tactic.html#a9a8d125f826667459758f2767c3bd957">itc.CTactic</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aea5ad2191ee16822a129eafb37d91779"></a><!-- doxytag: member="itc::tactic::CTactic_a0::onScannedRobot_" ref="aea5ad2191ee16822a129eafb37d91779" args="(solomon s, ScannedRobotEvent e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.tactic.CTactic_a0.onScannedRobot_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classitc_1_1solomon.html">solomon</a>&nbsp;</td>
+          <td class="paramname"> <em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ScannedRobotEvent&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This should be overwritten by every tactic. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classitc_1_1_c_tactic.html#a63a5a64ff30293061e37eca71fb77a96">itc.CTactic</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7d6f39924f332a7ed8c53820a45d3834"></a><!-- doxytag: member="itc::tactic::CTactic_a0::run_" ref="a7d6f39924f332a7ed8c53820a45d3834" args="(solomon s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.tactic.CTactic_a0.run_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classitc_1_1solomon.html">solomon</a>&nbsp;</td>
+          <td class="paramname"> <em>s</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This should be overwritten by every tactic. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classitc_1_1_c_tactic.html#ae5f5c51a6e04d22bc298dbdec4080770">itc.CTactic</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/carllange/Documents/workspace/Solomon/src/itc/tactic/CTactic_a0.java</li>
 </ul>

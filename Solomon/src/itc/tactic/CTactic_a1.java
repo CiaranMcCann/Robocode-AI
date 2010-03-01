@@ -13,9 +13,6 @@ public class CTactic_a1 extends CTactic {
 			s.ahead(10000);
 	}
 
-	/**
-	 * onScannedRobot: Fire hard!
-	 */
 	@Override
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{

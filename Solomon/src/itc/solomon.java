@@ -14,10 +14,20 @@ import robocode.*;
 public class solomon extends Robot
 {
 	private byte status;
+	
+	/**
+	 * Simply returns the current status (0,1,2,3).
+	 * @return currentStatus.
+	 */
 	public byte getStatus()
 	{
 		return status;
 	}
+	
+	/**
+	 * Simply sets the current status (0,1,2,3).
+	 * @param status
+	 */
 	public void setStatus(byte status) 
 	{
 		this.status = status;
@@ -37,10 +47,11 @@ public class solomon extends Robot
 	long endtime = 0;
 
 
-
+	/**
+	 * The constructor for Solomon. Calls populateLibrary.
+	 */
 	public solomon()
 	{
-		
 		status = 0;
 		currentTacticIndex = 0;
 		
@@ -50,28 +61,29 @@ public class solomon extends Robot
 	}
 	
 	/**
-	 * 
+	 * This populates the tacticLibrary. Nothing special to see here.
 	 */
 	private void populateLibrary() {
 		tacticLibrary = new CTactic[4][4];
 		
 		for (int j = 0; j < tacticLibrary.length; j++) {
 			for (int i = 0; i < tacticLibrary[j].length; i++) {
-					tacticLibrary[i][j] = new CTactic_d0(); 			
+					tacticLibrary[i][j] = new CTactic_ea0(); 			
 			}
 		}
-		// Uncomment these before committing!		
+		/* Uncomment these before committing!		
 		tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[1][0] = new CTactic_a0();
 		tacticLibrary[1][2] = new CTactic_a2();
 		tacticLibrary[2][0] = new CTactic_d0();
 		tacticLibrary[3][0] = new CTactic_ed0();
+		*/
 	}
-		
+	
 	/**
-	 * run: Solomon's default behavior
+	 * This sets Solomon's colours, then goes into an infinite loop.
+	 * This loop is Solomon's main loop (its "game loop", of sorts.
 	 */
-
 	public void run() 
 	{
 		this.setColors(Color.black, Color.gray, Color.white);
@@ -100,14 +112,16 @@ public class solomon extends Robot
 	}
 
 	/**
-	 * onScannedRobot: What to do when you see another robot
+	 * onScannedRobot: What to do when you see another robot.
+	 * This calls the current tactic's onScannedRobot_() method.
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		tacticLibrary[status][currentTacticIndex].onScannedRobot_(this, e);
 	}
 
 	/**
-	 * onHitByBullet: What to do when you're hit by a bullet
+	 * onHitByBullet: What to do when you're hit by a bullet.
+	 * This calls the current tactic's onHitByBullet_() method.
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		tacticLibrary[status][currentTacticIndex].onHitByBullet_(this, e);
@@ -115,6 +129,7 @@ public class solomon extends Robot
 	
 	/**
 	 * onHitRobot: What to do when you hit another robot.
+	 * This calls the current tactic's onHitRobot_() method.
 	 */
 	public void onHitRobot(HitRobotEvent e) {
 		tacticLibrary[status][currentTacticIndex].onHitRobot_(this, e);

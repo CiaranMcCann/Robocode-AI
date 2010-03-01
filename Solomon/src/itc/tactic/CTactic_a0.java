@@ -13,7 +13,7 @@ public class CTactic_a0 extends CTactic {
 	@Override
 	public void run_(solomon s)
 	{
-		s.setColors(Color.red, Color.red, Color.red);
+		
 	}
 
 	@Override

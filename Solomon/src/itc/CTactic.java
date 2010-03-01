@@ -1,6 +1,5 @@
 package itc;
 
-import java.awt.Color;
 import java.util.*;
 import robocode.*;
 
@@ -15,23 +14,40 @@ public class CTactic {
 
 	protected Random r = new Random();
 	
+	/**
+	 * This should be overwritten by every tactic.
+	 * @param s
+	 */
 	public void run_(solomon s)
 	{
 
 	}
 	
-
+	/**
+	 * This should be overwritten by every tactic.
+	 * @param s
+	 * @param e
+	 */
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
 		
 	}
 	
-	
+	/**
+	 * This should be overwritten by every tactic.
+	 * @param s
+	 * @param e
+	 */
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)
 	{
 		
 	}
 	
+	/**
+	 * This should be overwritten by every tactic.
+	 * @param s
+	 * @param e
+	 */
 	public void onHitRobot_(solomon s, HitRobotEvent e)
 	{
 		
@@ -103,7 +119,6 @@ public class CTactic {
 	 */
 	public boolean isGoodTactic(int status)
 	{
-		//TODO: Change this in the design doc. Design doc's description is old.
 		boolean result = false;
 		double sumOfGauging = 0;	
 		double sumOfArray = 0;
@@ -132,47 +147,88 @@ public class CTactic {
 		return result;
 	}
 	
-	// Returns a random number.
+	/**
+	 *  Returns a random number.
+	 *  @return
+	 */
 	protected double getRandom()
 	{
 		return r.nextDouble();
 	}
-	// Returns a number, between zero and input.
-	protected double getRandom(int n)
+	/**
+	 *  Returns a number, between zero and input.
+	 * @param highest
+	 * @return
+	 */
+	protected double getRandom(int highest)
 	{
-		return (double)(r.nextInt(n));
+		return (double)(r.nextInt(highest));
 	}
 	
 	// What follows are radian translations of calculations that return degrees. Done for compatability with Math.*;
+	
+	/**
+	 * Turns the gun right by the specified number of radians.
+	 * 
+	 * @param s
+	 * @param amountToRotateRadians
+	 */
 	protected void turnGunRightRadians(solomon s, double amountToRotateRadians) {
 		s.turnGunRight((amountToRotateRadians/180)*Math.PI);
 	}
 	
+	/**
+	 * Turns the gun right by the specified number of radians.
+	 *
+	 * @param s
+	 * @param amountToRotateRadians
+	 */
 	protected void turnRadarRightRadians(solomon s, double amountToRotateRadians) {
 		s.turnRadarRight((amountToRotateRadians/180)*Math.PI);
 	}
 	
+	/**
+	 * Turns the whole robot right by the specified number of radians.
+	 *
+	 * @param s
+	 * @param amountToRotateRadians
+	 */
 	protected void turnRightRadians(solomon s, double amountToRotateRadians) {
 		s.turnRight((amountToRotateRadians/180)*Math.PI);
 	}
 
+	/**
+	 * Gets the heading in radians.
+	 * @param s
+	 * @return
+	 */
 	protected double getHeadingRadians(solomon s) 
 	{
 		return (s.getHeading() * (Math.PI/180));
 	}
 	
+	/**
+	 * Gets the gun heading in radians.
+	 * @param s
+	 * @return
+	 */
 	protected double getGunHeadingRadians(solomon s) 
 	{
 		return (s.getGunHeading() * (Math.PI/180));
 	}
 	
+	/**
+	 * Gets the radar heading in radians.
+	 * @param s
+	 * @return
+	 */
 	protected double getRadarHeadingRadians(solomon s)
 	{
 		return (s.getRadarHeading() * (Math.PI/180));
 	}
 	
 	/**
-	 * Takes in amount in degress and returns it in radians
+	 * Takes in amount in degrees and returns it in radians
 	 * @param degrees
 	 * @return
 	 */
@@ -181,7 +237,12 @@ public class CTactic {
 		return (degrees * (Math.PI/180));
 	}
 	
-	protected double convertToDegress(double radians)
+	/**
+	 * Takes in radians and converts to degrees.
+	 * @param radians
+	 * @return
+	 */
+	protected double convertToDegrees(double radians)
 	{
 		return (radians * (180/Math.PI));
 	}

@@ -1,0 +1,70 @@
+\hypertarget{classitc_1_1_a_i}{
+\section{itc.AI Class Reference}
+\label{classitc_1_1_a_i}\index{itc::AI@{itc::AI}}
+}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classitc_1_1_a_i_a4f6a76cbca96e226d6045caa79180bbb}{
+static byte {\bfseries getGaugingThreshold} ()}
+\label{classitc_1_1_a_i_a4f6a76cbca96e226d6045caa79180bbb}
+
+\item 
+\hypertarget{classitc_1_1_a_i_a7fd6d93d400c4b5887de390dbb8b7117}{
+static void {\bfseries setGaugingThreshold} (byte \hyperlink{classitc_1_1_a_i_a55e666c1cfd457046c1b2ddfc2b44d62}{gaugingThreshold})}
+\label{classitc_1_1_a_i_a7fd6d93d400c4b5887de390dbb8b7117}
+
+\item 
+static int \hyperlink{classitc_1_1_a_i_ad9fb9145c1561f60c2011ad877ea8a0a}{pickTactic} (int status, int currentTacticIndex, \hyperlink{classitc_1_1_c_tactic}{CTactic} tacticLibrary\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]})
+\item 
+static byte \hyperlink{classitc_1_1_a_i_a8cf895fa4d48d6f2c6f17bd49d46ffaa}{gaugeTactic} (double healthBefore, double currentHealth)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static byte \hyperlink{classitc_1_1_a_i_a55e666c1cfd457046c1b2ddfc2b44d62}{gaugingThreshold} = 3
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is Solomon's decision making component. Here it assesses the past experiences and judges whether the tactic was successful in the past. \begin{DoxyAuthor}{Author}
+Ciaran McCann 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classitc_1_1_a_i_a8cf895fa4d48d6f2c6f17bd49d46ffaa}{
+\index{itc::AI@{itc::AI}!gaugeTactic@{gaugeTactic}}
+\index{gaugeTactic@{gaugeTactic}!itc::AI@{itc::AI}}
+\subsubsection[{gaugeTactic}]{\setlength{\rightskip}{0pt plus 5cm}static byte itc.AI.gaugeTactic (double {\em healthBefore}, \/  double {\em currentHealth})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classitc_1_1_a_i_a8cf895fa4d48d6f2c6f17bd49d46ffaa}
+Returns a one or a zero based on the health change in the time before a tactic was used and after to determine if it's a successful tactic 
+\begin{DoxyParams}{Parameters}
+\item[{\em healthBefore}]\item[{\em currentHealth}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classitc_1_1_a_i_ad9fb9145c1561f60c2011ad877ea8a0a}{
+\index{itc::AI@{itc::AI}!pickTactic@{pickTactic}}
+\index{pickTactic@{pickTactic}!itc::AI@{itc::AI}}
+\subsubsection[{pickTactic}]{\setlength{\rightskip}{0pt plus 5cm}static int itc.AI.pickTactic (int {\em status}, \/  int {\em currentTacticIndex}, \/  {\bf CTactic} {\em tacticLibrary}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classitc_1_1_a_i_ad9fb9145c1561f60c2011ad877ea8a0a}
+Picks a tactic for the robot based on the current status it's in i.e defensive, aggressive etc. It then calls another method isGoodTactic() which will find if the tactic as been successful in the past 
+\begin{DoxyParams}{Parameters}
+\item[{\em status}]\item[{\em currentTacticIndex}]\item[{\em tacticLibrary}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tactic to be used 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classitc_1_1_a_i_a55e666c1cfd457046c1b2ddfc2b44d62}{
+\index{itc::AI@{itc::AI}!gaugingThreshold@{gaugingThreshold}}
+\index{gaugingThreshold@{gaugingThreshold}!itc::AI@{itc::AI}}
+\subsubsection[{gaugingThreshold}]{\setlength{\rightskip}{0pt plus 5cm}byte {\bf itc.AI.gaugingThreshold} = 3\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classitc_1_1_a_i_a55e666c1cfd457046c1b2ddfc2b44d62}
+This is the percentage amount of negative change which is required or greater to get a negative result on the efficiency 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/Users/carllange/Documents/workspace/Solomon/src/itc/AI.java\end{DoxyCompactItemize}

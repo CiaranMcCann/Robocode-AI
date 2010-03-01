@@ -11,7 +11,7 @@
 <div class="navigation" id="top">
   <div class="tabs">
     <ul>
-      <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
     </ul>
   </div>
@@ -40,18 +40,116 @@ Inheritance diagram for itc.tactic.CTactic_ea0:</div>
 <p><a href="classitc_1_1tactic_1_1_c_tactic__ea0-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5b367f093ebea65ef06b41b03432289"></a><!-- doxytag: member="itc::tactic::CTactic_ea0::run_" ref="af5b367f093ebea65ef06b41b03432289" args="(solomon s)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>run_</b> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64e0ac47db137d34d3c52abbde65917f"></a><!-- doxytag: member="itc::tactic::CTactic_ea0::onScannedRobot_" ref="a64e0ac47db137d34d3c52abbde65917f" args="(solomon s, ScannedRobotEvent e)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>onScannedRobot_</b> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, ScannedRobotEvent e)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66859754a34c07f83a114509a86914cb"></a><!-- doxytag: member="itc::tactic::CTactic_ea0::onHitByBullet_" ref="a66859754a34c07f83a114509a86914cb" args="(solomon s, HitByBulletEvent e)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>onHitByBullet_</b> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, HitByBulletEvent e)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1tactic_1_1_c_tactic__ea0.html#af5b367f093ebea65ef06b41b03432289">run_</a> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1tactic_1_1_c_tactic__ea0.html#a64e0ac47db137d34d3c52abbde65917f">onScannedRobot_</a> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, ScannedRobotEvent e)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1tactic_1_1_c_tactic__ea0.html#a66859754a34c07f83a114509a86914cb">onHitByBullet_</a> (<a class="el" href="classitc_1_1solomon.html">solomon</a> s, HitByBulletEvent e)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>THIS COMMENT IS BULLSHIT. =] (Extrememly?) aggressive tactic.</p>
-<p>Rams the opponent, then moves as far away as possible, firing as it retreats. Then rams the enemy again. Implements linear targeting and bullet strength modulation.</p>
+<p>Moves as close as possible, firing as it retreats. Implements linear targeting and bullet strength modulation.</p>
 <p>Some open-source code used for linear targeting implementation.</p>
-<dl class="author"><dt><b>Author:</b></dt><dd>C00138612 </dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Carl Lange </dd></dl>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a66859754a34c07f83a114509a86914cb"></a><!-- doxytag: member="itc::tactic::CTactic_ea0::onHitByBullet_" ref="a66859754a34c07f83a114509a86914cb" args="(solomon s, HitByBulletEvent e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.tactic.CTactic_ea0.onHitByBullet_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classitc_1_1solomon.html">solomon</a>&nbsp;</td>
+          <td class="paramname"> <em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HitByBulletEvent&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This should be overwritten by every tactic. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classitc_1_1_c_tactic.html#a9a8d125f826667459758f2767c3bd957">itc.CTactic</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a64e0ac47db137d34d3c52abbde65917f"></a><!-- doxytag: member="itc::tactic::CTactic_ea0::onScannedRobot_" ref="a64e0ac47db137d34d3c52abbde65917f" args="(solomon s, ScannedRobotEvent e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.tactic.CTactic_ea0.onScannedRobot_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classitc_1_1solomon.html">solomon</a>&nbsp;</td>
+          <td class="paramname"> <em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ScannedRobotEvent&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This should be overwritten by every tactic. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classitc_1_1_c_tactic.html#a63a5a64ff30293061e37eca71fb77a96">itc.CTactic</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af5b367f093ebea65ef06b41b03432289"></a><!-- doxytag: member="itc::tactic::CTactic_ea0::run_" ref="af5b367f093ebea65ef06b41b03432289" args="(solomon s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.tactic.CTactic_ea0.run_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classitc_1_1solomon.html">solomon</a>&nbsp;</td>
+          <td class="paramname"> <em>s</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This should be overwritten by every tactic. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classitc_1_1_c_tactic.html#ae5f5c51a6e04d22bc298dbdec4080770">itc.CTactic</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/carllange/Documents/workspace/Solomon/src/itc/tactic/CTactic_ea0.java</li>
 </ul>

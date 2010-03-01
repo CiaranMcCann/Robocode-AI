@@ -9,7 +9,7 @@ import robocode.*;
  * 
  * Some open-source code used for linear targeting implementation.
  * 
- * @author C00138612
+ * @author Carl Lange
  *
  */
 
@@ -34,7 +34,8 @@ public class CTactic_ea0 extends CTactic
 		
 		turnRightRadians(s, robocode.util.Utils.normalRelativeAngle(absoluteBearing - getGunHeadingRadians(s)));
 		
-		s.ahead(enemyDist/2);
+		s.ahead(50);
+		fire(s, enemyDist);
 	}
 	
 	@Override

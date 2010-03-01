@@ -7,7 +7,7 @@ import itc.*;
 
 public class CTactic_ea1 extends CTactic {
 	int count = 0; // Keeps track of how long we've
-	// been searching for our target
+					// been searching for our target
 	double gunTurnAmt; // How much to turn our gun when searching
 	String trackName; // Name of the robot we're currently tracking
 
@@ -16,8 +16,6 @@ public class CTactic_ea1 extends CTactic {
 	 */	
 	@Override
 	public void run_(solomon s) {
-		
-		
 		// Prepare gun
 		trackName = null; // Initialize to not tracking anyone
 		s.setAdjustGunForRobotTurn(true); // Keep the gun still when we turn

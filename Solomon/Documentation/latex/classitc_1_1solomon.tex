@@ -1,0 +1,89 @@
+\hypertarget{classitc_1_1solomon}{
+\section{itc.solomon Class Reference}
+\label{classitc_1_1solomon}\index{itc::solomon@{itc::solomon}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+byte \hyperlink{classitc_1_1solomon_a1192c7e80d463fb5e0c6e5fc7f8b8944}{getStatus} ()
+\item 
+void \hyperlink{classitc_1_1solomon_aa16db4d650d1549fd1ae6426af16ea43}{setStatus} (byte status)
+\item 
+\hyperlink{classitc_1_1solomon_a774791cdf521fc7dc2118a761ccc0681}{solomon} ()
+\item 
+void \hyperlink{classitc_1_1solomon_a34ceb1ef78c0b0af58b074935e011a72}{run} ()
+\item 
+void \hyperlink{classitc_1_1solomon_a7b4f3c0da153c43da17a76c433770419}{onScannedRobot} (ScannedRobotEvent e)
+\item 
+void \hyperlink{classitc_1_1solomon_a61c2a71738163bea55b22c2ddd725117}{onHitByBullet} (HitByBulletEvent e)
+\item 
+void \hyperlink{classitc_1_1solomon_a5e824f07f03d305450e42a4356a003a5}{onHitRobot} (HitRobotEvent e)
+\end{DoxyCompactItemize}
+\subsection*{Package Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classitc_1_1solomon_a6bea1eb6237528e23c4c4341e261c6ba}{
+long {\bfseries maxduration} = 900}
+\label{classitc_1_1solomon_a6bea1eb6237528e23c4c4341e261c6ba}
+
+\item 
+\hypertarget{classitc_1_1solomon_a2584be2758541c9758f9f3ba4ba06f42}{
+long {\bfseries endtime} = 0}
+\label{classitc_1_1solomon_a2584be2758541c9758f9f3ba4ba06f42}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Solomon -\/ a robot by IT Carlow students Ciaran McCann and Carl Lange. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classitc_1_1solomon_a774791cdf521fc7dc2118a761ccc0681}{
+\index{itc::solomon@{itc::solomon}!solomon@{solomon}}
+\index{solomon@{solomon}!itc::solomon@{itc::solomon}}
+\subsubsection[{solomon}]{\setlength{\rightskip}{0pt plus 5cm}itc.solomon.solomon ()}}
+\label{classitc_1_1solomon_a774791cdf521fc7dc2118a761ccc0681}
+The constructor for Solomon. Calls populateLibrary. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classitc_1_1solomon_a1192c7e80d463fb5e0c6e5fc7f8b8944}{
+\index{itc::solomon@{itc::solomon}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!itc::solomon@{itc::solomon}}
+\subsubsection[{getStatus}]{\setlength{\rightskip}{0pt plus 5cm}byte itc.solomon.getStatus ()}}
+\label{classitc_1_1solomon_a1192c7e80d463fb5e0c6e5fc7f8b8944}
+Simply returns the current status (0,1,2,3). \begin{DoxyReturn}{Returns}
+currentStatus. 
+\end{DoxyReturn}
+\hypertarget{classitc_1_1solomon_a61c2a71738163bea55b22c2ddd725117}{
+\index{itc::solomon@{itc::solomon}!onHitByBullet@{onHitByBullet}}
+\index{onHitByBullet@{onHitByBullet}!itc::solomon@{itc::solomon}}
+\subsubsection[{onHitByBullet}]{\setlength{\rightskip}{0pt plus 5cm}void itc.solomon.onHitByBullet (HitByBulletEvent {\em e})}}
+\label{classitc_1_1solomon_a61c2a71738163bea55b22c2ddd725117}
+onHitByBullet: What to do when you're hit by a bullet. This calls the current tactic's onHitByBullet\_\-() method. \hypertarget{classitc_1_1solomon_a5e824f07f03d305450e42a4356a003a5}{
+\index{itc::solomon@{itc::solomon}!onHitRobot@{onHitRobot}}
+\index{onHitRobot@{onHitRobot}!itc::solomon@{itc::solomon}}
+\subsubsection[{onHitRobot}]{\setlength{\rightskip}{0pt plus 5cm}void itc.solomon.onHitRobot (HitRobotEvent {\em e})}}
+\label{classitc_1_1solomon_a5e824f07f03d305450e42a4356a003a5}
+onHitRobot: What to do when you hit another robot. This calls the current tactic's onHitRobot\_\-() method. \hypertarget{classitc_1_1solomon_a7b4f3c0da153c43da17a76c433770419}{
+\index{itc::solomon@{itc::solomon}!onScannedRobot@{onScannedRobot}}
+\index{onScannedRobot@{onScannedRobot}!itc::solomon@{itc::solomon}}
+\subsubsection[{onScannedRobot}]{\setlength{\rightskip}{0pt plus 5cm}void itc.solomon.onScannedRobot (ScannedRobotEvent {\em e})}}
+\label{classitc_1_1solomon_a7b4f3c0da153c43da17a76c433770419}
+onScannedRobot: What to do when you see another robot. This calls the current tactic's onScannedRobot\_\-() method. \hypertarget{classitc_1_1solomon_a34ceb1ef78c0b0af58b074935e011a72}{
+\index{itc::solomon@{itc::solomon}!run@{run}}
+\index{run@{run}!itc::solomon@{itc::solomon}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void itc.solomon.run ()}}
+\label{classitc_1_1solomon_a34ceb1ef78c0b0af58b074935e011a72}
+This sets Solomon's colours, then goes into an infinite loop. This loop is Solomon's main loop (its \char`\"{}game loop\char`\"{}, of sorts. \hypertarget{classitc_1_1solomon_aa16db4d650d1549fd1ae6426af16ea43}{
+\index{itc::solomon@{itc::solomon}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!itc::solomon@{itc::solomon}}
+\subsubsection[{setStatus}]{\setlength{\rightskip}{0pt plus 5cm}void itc.solomon.setStatus (byte {\em status})}}
+\label{classitc_1_1solomon_aa16db4d650d1549fd1ae6426af16ea43}
+Simply sets the current status (0,1,2,3). 
+\begin{DoxyParams}{Parameters}
+\item[{\em status}]\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/Users/carllange/Documents/workspace/Solomon/src/itc/solomon.java\end{DoxyCompactItemize}

@@ -7,12 +7,12 @@ import robocode.*;
 /**
  * Defensive tactic.
  * 
- * @author C00138612
+ * @author Carl Lange
  *
  */
 
-public class CTactic_d0 extends CTactic 
-{	
+public class CTactic_d0 extends CTactic
+{
 	@Override
 	public void run_(solomon s)
 	{

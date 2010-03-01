@@ -11,7 +11,7 @@
 <div class="navigation" id="top">
   <div class="tabs">
     <ul>
-      <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
     </ul>
   </div>
@@ -30,13 +30,13 @@
 <p><a href="classitc_1_1solomon-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1192c7e80d463fb5e0c6e5fc7f8b8944"></a><!-- doxytag: member="itc::solomon::getStatus" ref="a1192c7e80d463fb5e0c6e5fc7f8b8944" args="()" -->
-byte&nbsp;</td><td class="memItemRight" valign="bottom"><b>getStatus</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa16db4d650d1549fd1ae6426af16ea43"></a><!-- doxytag: member="itc::solomon::setStatus" ref="aa16db4d650d1549fd1ae6426af16ea43" args="(byte status)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setStatus</b> (byte status)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">byte&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1solomon.html#a1192c7e80d463fb5e0c6e5fc7f8b8944">getStatus</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1solomon.html#aa16db4d650d1549fd1ae6426af16ea43">setStatus</a> (byte status)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1solomon.html#a774791cdf521fc7dc2118a761ccc0681">solomon</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1solomon.html#a34ceb1ef78c0b0af58b074935e011a72">run</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1solomon.html#a7b4f3c0da153c43da17a76c433770419">onScannedRobot</a> (ScannedRobotEvent e)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1solomon.html#a61c2a71738163bea55b22c2ddd725117">onHitByBullet</a> (HitByBulletEvent e)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitc_1_1solomon.html#a5e824f07f03d305450e42a4356a003a5">onHitRobot</a> (HitRobotEvent e)</td></tr>
 <tr><td colspan="2"><h2>Package Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6bea1eb6237528e23c4c4341e261c6ba"></a><!-- doxytag: member="itc::solomon::maxduration" ref="a6bea1eb6237528e23c4c4341e261c6ba" args="" -->
 long&nbsp;</td><td class="memItemRight" valign="bottom"><b>maxduration</b> = 900</td></tr>
@@ -45,7 +45,45 @@ long&nbsp;</td><td class="memItemRight" valign="bottom"><b>endtime</b> = 0</td><
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Solomon - a robot by IT Carlow students Ciaran McCann and Carl Lange. </p>
+<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a774791cdf521fc7dc2118a761ccc0681"></a><!-- doxytag: member="itc::solomon::solomon" ref="a774791cdf521fc7dc2118a761ccc0681" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">itc.solomon.solomon </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The constructor for Solomon. Calls populateLibrary. </p>
+
+</div>
+</div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a1192c7e80d463fb5e0c6e5fc7f8b8944"></a><!-- doxytag: member="itc::solomon::getStatus" ref="a1192c7e80d463fb5e0c6e5fc7f8b8944" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte itc.solomon.getStatus </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Simply returns the current status (0,1,2,3). </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>currentStatus. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a61c2a71738163bea55b22c2ddd725117"></a><!-- doxytag: member="itc::solomon::onHitByBullet" ref="a61c2a71738163bea55b22c2ddd725117" args="(HitByBulletEvent e)" -->
 <div class="memitem">
 <div class="memproto">
@@ -61,7 +99,26 @@ long&nbsp;</td><td class="memItemRight" valign="bottom"><b>endtime</b> = 0</td><
       </table>
 </div>
 <div class="memdoc">
-<p>onHitByBullet: What to do when you're hit by a bullet </p>
+<p>onHitByBullet: What to do when you're hit by a bullet. This calls the current tactic's onHitByBullet_() method. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5e824f07f03d305450e42a4356a003a5"></a><!-- doxytag: member="itc::solomon::onHitRobot" ref="a5e824f07f03d305450e42a4356a003a5" args="(HitRobotEvent e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.solomon.onHitRobot </td>
+          <td>(</td>
+          <td class="paramtype">HitRobotEvent&nbsp;</td>
+          <td class="paramname"> <em>e</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>onHitRobot: What to do when you hit another robot. This calls the current tactic's onHitRobot_() method. </p>
 
 </div>
 </div>
@@ -80,7 +137,7 @@ long&nbsp;</td><td class="memItemRight" valign="bottom"><b>endtime</b> = 0</td><
       </table>
 </div>
 <div class="memdoc">
-<p>onScannedRobot: What to do when you see another robot </p>
+<p>onScannedRobot: What to do when you see another robot. This calls the current tactic's onScannedRobot_() method. </p>
 
 </div>
 </div>
@@ -98,7 +155,32 @@ long&nbsp;</td><td class="memItemRight" valign="bottom"><b>endtime</b> = 0</td><
       </table>
 </div>
 <div class="memdoc">
-<p>run: Solomon's default behavior </p>
+<p>This sets Solomon's colours, then goes into an infinite loop. This loop is Solomon's main loop (its "game loop", of sorts. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa16db4d650d1549fd1ae6426af16ea43"></a><!-- doxytag: member="itc::solomon::setStatus" ref="aa16db4d650d1549fd1ae6426af16ea43" args="(byte status)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void itc.solomon.setStatus </td>
+          <td>(</td>
+          <td class="paramtype">byte&nbsp;</td>
+          <td class="paramname"> <em>status</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Simply sets the current status (0,1,2,3). </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>status</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

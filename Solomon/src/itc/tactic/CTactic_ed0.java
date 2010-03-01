@@ -8,7 +8,7 @@ import itc.*;
 /**
  * This needs documentation and better commenting.
  * TODO: Make this better, damnit.
- * @author carllange
+ * @author Carl Lange
  *
  */
 public class CTactic_ed0 extends CTactic {
@@ -20,7 +20,6 @@ public class CTactic_ed0 extends CTactic {
 	
 	@Override
 	public void run_(solomon s) {
-		s.setColors(Color.red, Color.red, Color.red);
 		
 		getFurthestPossibleDistance(s);
 		
