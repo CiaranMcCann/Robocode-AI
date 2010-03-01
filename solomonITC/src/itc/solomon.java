@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import robocode.*;
 
 
@@ -56,17 +55,32 @@ public class solomon extends Robot
 	private void populateLibrary() {
 		tacticLibrary = new CTactic[4][4];
 		
-		for (int j = 0; j < tacticLibrary.length; j++) {
-			for (int i = 0; i < tacticLibrary[j].length; i++) {
-					tacticLibrary[i][j] = new CTactic_ea1(); 			
-			}
-		}
+		//for (int j = 0; j < tacticLibrary.length; j++) {
+		//	for (int i = 0; i < tacticLibrary[j].length; i++) {
+		//			tacticLibrary[i][j] = new CTactic_d0(); 			
+		//	}
+	//	}
 		// Uncomment these before committing!		
-		//tacticLibrary[0][0] = new CTactic_ea0();
-		//tacticLibrary[1][0] = new CTactic_a0();
-		//tacticLibrary[1][2] = new CTactic_a2();
-		//tacticLibrary[2][0] = new CTactic_d0();
-		//tacticLibrary[3][0] = new CTactic_ed0();
+		
+		tacticLibrary[0][0] = new CTactic_ea0();
+		tacticLibrary[0][1] = new CTactic_ea0();
+		tacticLibrary[0][2] = new CTactic_ea0();
+		tacticLibrary[0][3] = new CTactic_ea0();
+		
+		tacticLibrary[1][0] = new CTactic_a0();
+		tacticLibrary[1][1] = new CTactic_a1();
+		tacticLibrary[1][2] = new CTactic_a2();
+		tacticLibrary[1][3] = new CTactic_a0();
+		
+		tacticLibrary[2][0] = new CTactic_d0();
+		tacticLibrary[2][1] = new CTactic_d0();
+		tacticLibrary[2][2] = new CTactic_d0();
+		tacticLibrary[2][3] = new CTactic_d0();
+		
+		tacticLibrary[3][0] = new CTactic_ed0();
+		tacticLibrary[3][1] = new CTactic_ed0();
+		tacticLibrary[3][2] = new CTactic_ed0();
+		tacticLibrary[3][3] = new CTactic_ed0();
 	}
 		
 	/**
@@ -473,164 +487,307 @@ class AI {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//START OF ALL THE TACTICS
+//START OF CTactic_ea0
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-class CTactic_ea1 extends CTactic {
- 	int count = 0; // Keeps track of how long we've
- 	// been searching for our target
- 	double gunTurnAmt; // How much to turn our gun when searching
- 	String trackName; // Name of the robot we're currently tracking
+/**
+ * Moves as close as possible, firing as it retreats.
+ * Implements linear targeting and bullet strength modulation.
+ * 
+ * Some open-source code used for linear targeting implementation.
+ * 
+ * @author Carl Lange
+ *
+ */
 
- 	/**
- 	 * run:  Tracker's main run function
- 	 */	
- 	@Override
- 	public void run_(solomon s) {
- 		
- 		
- 		// Prepare gun
- 		trackName = null; // Initialize to not tracking anyone
- 		s.setAdjustGunForRobotTurn(true); // Keep the gun still when we turn
- 		gunTurnAmt = 10; // Initialize gunTurn to 10
+class CTactic_ea0 extends CTactic 
+{	
+	@Override
+	public void run_(solomon s)
+	{
 
- 		// Loop forever
- 		while (true) {
- 			// turn the Gun (looks for enemy)
- 			s.turnGunRight(gunTurnAmt);
- 			// Keep track of how long we've been looking
- 			count++;
- 			// If we've haven't seen our target for 2 turns, look left
- 			if (count > 2) {
- 				gunTurnAmt = -10;
- 			}
- 			// If we still haven't seen our target for 5 turns, look right
- 			if (count > 3) {
- 				gunTurnAmt = 10;
- 			}
- 			// If we *still* haven't seen our target after 10 turns, find another target
- 			if (count > 11) {
- 				trackName = null;
- 			}
- 			
- 		
- 		}
- 	}
- 	
- 	/**
- 	 * onScannedRobot:  Here's the good stuff
- 	 */	
- 	@Override
- 	public void onScannedRobot_(solomon s,ScannedRobotEvent e) {
+		if (s.getVelocity()==0) s.turnRight(90);
+		s.turnRight(360);
+	}
 
- 		// If we have a target, and this isn't it, return immediately
- 		// so we can get more ScannedRobotEvents.
- 		if (trackName != null && !e.getName().equals(trackName)) {
- 			return;
- 		}
+	@Override
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
+	{
+		double enemyDist = e.getDistance();
+		
+		fire(s, enemyDist);
+		
+		double absoluteBearing = getHeadingRadians(s) + e.getBearingRadians();
+		
+		turnRightRadians(s, robocode.util.Utils.normalRelativeAngle(absoluteBearing - getGunHeadingRadians(s)));
+		
+		s.ahead(50);
+		fire(s, enemyDist);
+	}
+	
+	@Override
+	public void onHitByBullet_(solomon s, HitByBulletEvent e)
+	{
+		s.turnRight(getRandom(360));
+		s.ahead(getRandom(150));
+	}
+}
 
- 		// If we don't have a target, well, now we do!
- 		if (trackName == null) {
- 			trackName = e.getName();
- 			//out.println("Tracking " + trackName);
- 		}
- 		// This is our target.  Reset count (see the run method)
- 		count = 0;
- 		// If our target is too far away, turn and move torward it.
- 		if (e.getDistance() > 150) {
- 			gunTurnAmt = normalRelativeAngle(e.getBearing() + (s.getHeading() - s.getRadarHeading()));
- 			
- 			s.turnGunRight(gunTurnAmt); // Try changing these to setTurnGunRight,
- 			s.turnRight(e.getBearing()); // and see how much Tracker improves...
- 			// (you'll have to make Tracker an AdvancedRobot)
- 			s.ahead(e.getDistance() - 135);
- 			return;
- 		}
 
- 		// Our target is close.
- 		gunTurnAmt = normalRelativeAngle(e.getBearing() + (s.getHeading() - s.getRadarHeading()));
- 		s.turnGunRight(gunTurnAmt);
- 		s.fire(3);
- 		
- 		// Our target is too close!  Back up.
- 		if (e.getDistance() < 100) {
- 			if (e.getBearing() > -90 && e.getBearing() <= 90) {
- 				s.back(30);
- 			} else {
- 				s.ahead(40);
- 			}
- 		}
- 		s.scan();
- 	}
- 	
- 	/**
- 	 * onHitRobot:  Set him as our new target
- 	 */	
- 	@Override
- 	public void onHitRobot_(solomon s,HitRobotEvent e) {
- 		// Only print if he's not already our target.
- 		if (trackName != null && !trackName.equals(e.getName())) {
- 			//out.println("Tracking " + e.getName() + " due to collision");
- 		}
- 		// Set the target
- 		trackName = e.getName();
- 		// Back up a bit.
- 		// Note:  We won't get scan events while we're doing this!
- 		// An AdvancedRobot might use setBack(); execute();
- 		gunTurnAmt = normalRelativeAngle(e.getBearing() + (s.getHeading() - s.getRadarHeading()));
- 		s.turnGunRight(gunTurnAmt);
- 		s.fire(3);
- 		s.back(50);
- 	}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//END OF CTactic_ea0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
- 	/**
- 	 * onWin:  Do a victory dance
- 	 */	
- 	public void onWin(solomon s,WinEvent e) {
- 		for (int i = 0; i < 50; i++) {
- 			s.turnRight(30);
- 			s.turnLeft(30);
- 			s.turnRight(36000);
- 		}
- 	}
- 	
- 	// normalAbsoluteAngle is not used in this robot,
- 	// but is here for reference.
- 	/**
- 	 * normalAbsoluteAngle:  Returns angle such that 0 <= angle < 360
- 	 */	
- 	public double normalAbsoluteAngle(double angle) {
- 		if (angle >= 0 && angle < 360) {
- 			return angle;
- 		}
- 		double fixedAngle = angle;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//START OF CTactic_a0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
- 		while (fixedAngle < 0) {
- 			fixedAngle += 360;
- 		}
- 		while (fixedAngle >= 360) {
- 			fixedAngle -= 360;
- 		}
- 		return fixedAngle;
- 	}
 
- 	/**
- 	 * normalRelativeAngle:  Returns angle such that -180 < angle <= 180
- 	 */	
- 	public double normalRelativeAngle(double angle) {
- 		if (angle > -180 && angle <= 180) {
- 			return angle;
- 		}
- 		double fixedAngle = angle;
+class CTactic_a0 extends CTactic {
+	
+	@Override
+	public void run_(solomon s)
+	{		
+			s.turnGunRight(5);		
+	}
 
- 		while (fixedAngle <= -180) {
- 			fixedAngle += 360;
- 		}
- 		while (fixedAngle > 180) {
- 			fixedAngle -= 360;
- 		}
- 		return fixedAngle;
- 	}
- }
+	@Override
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
+	{
+		
+		fire(s, e.getDistance());					
+		s.scan();
+	}
+	
+	@Override
+	public void onHitByBullet_(solomon s, HitByBulletEvent e)
+	{
+		s.fire(0.1);
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//END OF CTactic_a0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//START OF CTactic_a1
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+class CTactic_a1 extends CTactic {
+
+	@Override
+	public void run_(solomon s) {
+			s.turnRight(10000);
+			s.ahead(10000);
+	}
+
+	@Override
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
+	{
+		double edist = e.getDistance();
+		fire(s, edist);
+	}
+
+	/**
+	 * onHitRobot:  If it's our fault, we'll stop turning and moving,
+	 * so we need to turn again to keep spinning.
+	 */
+	@Override
+	public void onHitRobot_(solomon s, HitRobotEvent e)
+	{
+		if (e.getBearing() > -10 && e.getBearing() < 10) {
+			s.fire(3);
+		}
+		if (e.isMyFault()) {
+			s.turnRight(10);
+		}
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//END OF CTactic_a1
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//START OF CTactic_a2
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+class CTactic_a2 extends CTactic {
+	
+	@Override
+	public void run_(solomon s)
+	{
+			s.turnGunRight(15);
+	}
+
+	@Override
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
+	{
+	
+		fire(s, e.getDistance());
+		
+		s.scan();
+	}
+	
+	@Override
+	public void onHitByBullet_(solomon s, HitByBulletEvent e)
+	{
+		s.ahead(200);
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//END OF CTactic_a2
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//START OF CTactic_d0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/**
+ * Defensive tactic.
+ * 
+ * @author Carl Lange
+ *
+ */
+
+class CTactic_d0 extends CTactic
+{
+	@Override
+	public void run_(solomon s)
+	{
+			if (s.getHeading() % 90 != 0) s.turnLeft(s.getHeading() % 90);
+			
+			s.ahead(Double.POSITIVE_INFINITY);
+			
+			if (s.getVelocity()==0) s.turnRight(90);
+			
+			s.turnGunRight(360);
+	}
+
+	@Override    
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
+	{
+		double enemyDist = e.getDistance();
+		
+		double absoluteBearing = getHeadingRadians(s) + e.getBearingRadians();
+		turnGunRightRadians(s, robocode.util.Utils.normalRelativeAngle(absoluteBearing - getGunHeadingRadians(s)));
+		
+		fire(s, enemyDist);
+	}
+	
+	@Override
+	public void onHitByBullet_(solomon s, HitByBulletEvent e)
+	{
+		
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//END OF CTactic_d0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//START OF ALL THE CTactic_ed0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+class CTactic_ed0 extends CTactic {
+	
+	boolean scannedRobotYet = false;
+	double enemyDistance = -1;
+	double furthestPossibleDistance = -1;
+	
+	
+	@Override
+	public void run_(solomon s) {
+		
+		getFurthestPossibleDistance(s);
+		
+		if (scannedRobotYet == false) {
+			s.turnGunRight(360);
+		}
+		
+		while (scannedRobotYet == true) {
+			// If distance from enemy isn't within an acceptable margin, move to a spot that is.
+			
+			if (acceptableDist() != true) {
+				// TODO: move to a better location.
+				// TODO: try the next position, (eg x+10, y+10 or something), and figure out whether the distance there is further.
+				// Even better, x+rand, y+rand.
+				
+				if(acceptableDist(nextPosition(s))==true)
+				{
+					// TODO: move
+				}
+				
+				s.turnGunLeft(360);
+				
+			}
+			else {
+				s.turnGunRight(360);
+			}
+		}
+	}
+
+	
+
+	private double nextPosition(solomon s) {
+		// TODO Auto-generated method stub
+		return -1;
+	}
+	
+	private boolean acceptableDist(double nextPosition) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	private boolean acceptableDist() {
+		// This could probably be done with bias...
+		boolean n = false;
+		if (enemyDistance > (furthestPossibleDistance/2))
+		{
+			n=true;
+		}
+		return n;
+	}
+
+	@Override
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e) {
+		// TODO: This needs to be sure that it's only working for enemy AI, rather than sentries.
+		// MAYBE: That should actually be in CTactic, figuring out a target or something...
+		enemyDistance = e.getDistance();
+		scannedRobotYet = true;
+	}
+	
+	private void getFurthestPossibleDistance(solomon s) {
+		double h = s.getBattleFieldHeight();
+		double w = s.getBattleFieldWidth();
+		
+		double hyp = Math.sqrt((h*h) + (w*w));
+		
+		furthestPossibleDistance = hyp;
+	}
+
+	@Override
+	public void onHitByBullet_(solomon s, HitByBulletEvent e) {
+		
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//END OF CTactic_ed0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
