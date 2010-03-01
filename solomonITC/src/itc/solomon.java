@@ -90,7 +90,7 @@ public class solomon extends Robot
 	public void run() 
 	{
 		this.setColors(Color.black, Color.gray, Color.white);
-		
+		System.out.print("dfadfsgsdfg");
 		while(true) {
 				
 			status = this.assessHealth();
