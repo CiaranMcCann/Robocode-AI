@@ -68,16 +68,16 @@ public class solomon extends Robot
 		
 		for (int j = 0; j < tacticLibrary.length; j++) {
 			for (int i = 0; i < tacticLibrary[j].length; i++) {
-					tacticLibrary[i][j] = new CTactic_ea0(); 			
+					tacticLibrary[i][j] = new CTactic_d0(); 			
 			}
 		}
-		/* Uncomment these before committing!		
-		tacticLibrary[0][0] = new CTactic_ea0();
+		// Uncomment these before committing!		
+		//tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[1][0] = new CTactic_a0();
 		tacticLibrary[1][2] = new CTactic_a2();
 		tacticLibrary[2][0] = new CTactic_d0();
 		tacticLibrary[3][0] = new CTactic_ed0();
-		*/
+		
 	}
 	
 	/**
