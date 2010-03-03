@@ -55,15 +55,15 @@ public class solomon extends Robot
 	private void populateLibrary() {
 		tacticLibrary = new CTactic[4][4];
 			
-		/*
-		 for (int j = 0; j < tacticLibrary.length; j++) {
+		
+		for (int j = 0; j < tacticLibrary.length; j++) {
 		 for (int i = 0; i < tacticLibrary[j].length; i++) {
-		 tacticLibrary[i][j] = new CTactic_d1(); 			
+		 tacticLibrary[i][j] = new CTactic_ea0(); 			
 		 }
 		}
-		*/
-			// Uncomment these before committing!		
 		
+			// Uncomment these before committing!		
+		/*
 		tacticLibrary[0][0] = new CTactic_ea0();
 		tacticLibrary[0][1] = new CTactic_ea0();
 		tacticLibrary[0][2] = new CTactic_ea0();
@@ -72,7 +72,7 @@ public class solomon extends Robot
 		tacticLibrary[1][0] = new CTactic_a0();
 		tacticLibrary[1][1] = new CTactic_a2();
 		tacticLibrary[1][2] = new CTactic_a0();
-		tacticLibrary[1][3] = new CTactic_a0();
+		tacticLibrary[1][3] = new CTactic_a2();
 		
 		tacticLibrary[2][0] = new CTactic_d1();
 		tacticLibrary[2][1] = new CTactic_d1();
@@ -80,10 +80,10 @@ public class solomon extends Robot
 		tacticLibrary[2][3] = new CTactic_d1();
 		
 		tacticLibrary[3][0] = new CTactic_ed0();
-		tacticLibrary[3][1] = new CTactic_ed0();
+		tacticLibrary[3][1] = new CTactic_ed1();
 		tacticLibrary[3][2] = new CTactic_ed0();
-		tacticLibrary[3][3] = new CTactic_ed0();
-		
+		tacticLibrary[3][3] = new CTactic_ed1();
+		*/
 	}
 	
 	/**
@@ -315,12 +315,10 @@ class CTactic {
 	   
 	}
 	
-	
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
 	   
 	}
-	
 	
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)
 	{
@@ -370,16 +368,14 @@ class CTactic {
 			// or if it's closer than 100 units, it'll go straight to full power.
 		if (enemyDist > 500)
 		 {
-			firePower = 0.1;
+			if (s.getStatus() >= 1)
+			{
+				firePower = 0.1;
+			}
 		 }
 		else if (enemyDist < 100)
 		 {
-			
 			firePower = 5.0;
-			
-			s.fire(firePower);
-			s.fire(firePower);
-			s.fire(firePower);
 		 }
 		else
 		 {
@@ -662,12 +658,10 @@ class CTactic_a1 extends CTactic {
 		   targetName = e.getName();
 		}
 	   
-		   //System.out.println("angleOfGun = " + angleOfGun + "  angleOfRadar = " + angleOfRadar);		
+		System.out.println(/*"angleOfGun = " + angleOfGun +*/ "  angleOfRadar = " + angleOfRadar);		
 	   
 	   if(!(e.getName().isEmpty())&&(targetName == e.getName()))
 		{	
-			
-			
 			angleOfRadar = (int)s.getRadarHeading();			
 			if(((int)e.getBearing() >= 0)&&((int)e.getBearing() <= 45))
 			 {
@@ -678,18 +672,12 @@ class CTactic_a1 extends CTactic {
 			 {
 				enemyDirectionConsideration = 10;
 			 }
-			
 		}
-	   
 	}
 	
 	@Override
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)
 	{
-		   //s.ahead(100); // Move ahead 100
-		   //s.turnGunRight(360); // Spin gun around
-		   //s.back(100); // Move back 100
-		   //s.turnGunRight(360); // Spin gun around
 	}
 }
 
@@ -956,12 +944,104 @@ class CTactic_ed0 extends CTactic {
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)
 	{
 	   
-	}
-	
+	}	
 }
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//END OF CTactic_ed0
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//START OF CTactic_ed1
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class CTactic_ed1 extends CTactic {
+	
+	private double hyp = 0;
+	private double amtToTurnBy = 0;
+	
+	
+	@Override
+	public void run_(solomon s)
+	{	
+		if (hyp==0)
+		{
+			hyp = Math.sqrt((s.getBattleFieldHeight()*s.getBattleFieldWidth())+(s.getBattleFieldWidth()*s.getBattleFieldWidth()));
+		}
+		
+	    if ((s.getX()<128) && (s.getY()<128)) // Bottom left corner
+		{
+			if(s.getHeading() !=45)
+			{
+				amtToTurnBy = (s.getHeading()-45);
+			}
+		}
+		else if ((s.getX()<128) && (s.getY()>(s.getBattleFieldHeight()-128))) // Top left corner
+		{
+			if(s.getHeading() !=135)
+			{
+				amtToTurnBy = (s.getHeading()-135);
+			}	
+		}
+		else if ((s.getX()>s.getBattleFieldWidth()-128) && (s.getY()<(128))) // Bottom right corner.
+		{
+			if(s.getHeading() !=315)
+			{
+				amtToTurnBy = (s.getHeading()-315);
+			}
+		}
+		else if ((s.getX()>(s.getBattleFieldWidth()-128)) && (s.getY()>(s.getBattleFieldHeight()-128))) // Top right corner
+		{
+			if(s.getHeading() !=225)
+			{
+				amtToTurnBy = (s.getHeading()-225);
+			}
+		}
+		else
+		{
+			s.turnGunLeft(360);
+			return;
+		}
+	    
+	    
+		if ((amtToTurnBy > 0) && (amtToTurnBy <360))
+		{
+			// Do nothing with it.
+		}
+		else if (amtToTurnBy < 0)
+		{
+			// amtToTurnBy+=360;
+		}
+		else if (amtToTurnBy > 360)
+		{
+			amtToTurnBy-=360;
+		}
+		
+		s.turnLeft(amtToTurnBy);
+		
+	    s.ahead(hyp/2);
+	    
+	    
+	    
+	    if (s.getVelocity() == 0)
+	    {
+	    	s.back(90);
+	    }
+	}
+	
+
+	@Override    
+	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
+	{
+	   fire(s, e.getDistance());
+	}
+	
+	@Override
+	public void onHitByBullet_(solomon s, HitByBulletEvent e)
+	{
+	   
+	}
+}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//END OF CTactic_ed0
