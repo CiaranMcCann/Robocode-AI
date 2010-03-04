@@ -534,9 +534,7 @@ class CTactic_ea0 extends CTactic
 		 }
 		s.turnRight(e.getBearing());		
 		s.ahead(50);
-	}
-	
-	
+	}	
 }
 
 
@@ -713,6 +711,7 @@ class CTactic_a2 extends CTactic {
 	@Override
 	public void onHitByBullet_(solomon s, HitByBulletEvent e)
 	{
+		s.turnLeft(getRandom());
 	   s.ahead(200);
 	}
 }
@@ -727,12 +726,17 @@ class CTactic_a2 extends CTactic {
 	//START OF CTactic_d0
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Maybe we should remove this one. It's pretty crappy.
+ * 
+ * Random movement based on distance.
+ * 
+ */
 class CTactic_d0 extends CTactic
 {
 	boolean scannedRobotYet = false;
 	double enemyDistance = -1;
 	double furthestPossibleDistance = -1;
-	
 	
 	@Override
 	public void run_(solomon s) {
@@ -809,8 +813,7 @@ class CTactic_d0 extends CTactic
 	public void onHitByBullet_(solomon s, HitByBulletEvent e) {
 		s.turnLeft(getRandom(360));
 		s.ahead(100);
-	}
-	
+	}	
 }
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -823,14 +826,13 @@ class CTactic_d0 extends CTactic
 
 class CTactic_d1 extends CTactic {
 	byte dir; // 1 when going up, 0 when going down.
-	boolean isTurning = true;
 	
 	@Override
 	public void run_(solomon s)
 	{
-		if (s.getHeading() % 180 != 0) 
+		if (s.getHeading() % 180 != 0) // If he's not pointing up or down,
 		{
-			s.turnLeft(s.getHeading() % 180);
+			s.turnLeft(s.getHeading() % 180); // point him up or down.
 		}
 
 		if (dir==1)
@@ -842,9 +844,9 @@ class CTactic_d1 extends CTactic {
 			s.ahead(128);
 		}
 		
-		s.turnGunLeft(30);
+		s.turnGunLeft(60);
 		
-		switchDir(s, s.getY());
+		switchDir(s, s.getY()); // This method will change direction if y<128 or >battleFieldHeight-128.
 	}
 	
 	@Override
@@ -957,52 +959,52 @@ class CTactic_ed0 extends CTactic {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class CTactic_ed1 extends CTactic {
 	
-	private double hyp = 0;
-	private double amtToTurnBy = 0;
+	private double diagonalOfBattlefield = -1; // The diagonal of the battlefield.
+	private double amtToTurnBy = 0; // The amount to turn by.
 	
 	
 	@Override
 	public void run_(solomon s)
 	{	
-		if (hyp==0)
+		if (diagonalOfBattlefield==-1) // If the diagonal hasn't been properly initialised yet, do that
 		{
-			hyp = Math.sqrt((s.getBattleFieldHeight()*s.getBattleFieldWidth())+(s.getBattleFieldWidth()*s.getBattleFieldWidth()));
+			diagonalOfBattlefield = Math.sqrt((s.getBattleFieldHeight()*s.getBattleFieldWidth())+(s.getBattleFieldWidth()*s.getBattleFieldWidth()));
 		}
+		
 		
 	    if ((s.getX()<128) && (s.getY()<128)) // Bottom left corner
 		{
-			if(s.getHeading() !=45)
+			if(s.getHeading() !=45) // If solomon isn't pointing north-east,
 			{
-				amtToTurnBy = (s.getHeading()-45);
+				amtToTurnBy = (s.getHeading()-45); // point him north-east.
 			}
 		}
 		else if ((s.getX()<128) && (s.getY()>(s.getBattleFieldHeight()-128))) // Top left corner
 		{
-			if(s.getHeading() !=135)
+			if(s.getHeading() !=135) // If solomon's not pointing south-west,
 			{
-				amtToTurnBy = (s.getHeading()-135);
+				amtToTurnBy = (s.getHeading()-135); // point him that way.
 			}	
 		}
 		else if ((s.getX()>s.getBattleFieldWidth()-128) && (s.getY()<(128))) // Bottom right corner.
 		{
-			if(s.getHeading() !=315)
+			if(s.getHeading() !=315) // If solomon's not pointing north-west,
 			{
-				amtToTurnBy = (s.getHeading()-315);
+				amtToTurnBy = (s.getHeading()-315); // point him that way.
 			}
 		}
 		else if ((s.getX()>(s.getBattleFieldWidth()-128)) && (s.getY()>(s.getBattleFieldHeight()-128))) // Top right corner
 		{
-			if(s.getHeading() !=225)
+			if(s.getHeading() !=225) // If solomon's not pointing south-east,
 			{
-				amtToTurnBy = (s.getHeading()-225);
+				amtToTurnBy = (s.getHeading()-225); // point him that way.
 			}
 		}
 		else
 		{
-			s.turnGunLeft(360);
-			return;
+			s.turnGunLeft(360); // If solomon's close enough to the centre of the ring, he'll spin around and fire like a madman.
+			return; // Return here. I know it's terrible practice. //TODO: Don't let this return here.
 		}
-	    
 	    
 		if ((amtToTurnBy > 0) && (amtToTurnBy <360))
 		{
@@ -1011,6 +1013,7 @@ class CTactic_ed1 extends CTactic {
 		else if (amtToTurnBy < 0)
 		{
 			// amtToTurnBy+=360;
+			// He'll actually just turn right. Hooray!
 		}
 		else if (amtToTurnBy > 360)
 		{
@@ -1019,21 +1022,19 @@ class CTactic_ed1 extends CTactic {
 		
 		s.turnLeft(amtToTurnBy);
 		
-	    s.ahead(hyp/2);
+	    s.ahead(diagonalOfBattlefield/2); // Should move to the centre. Should. Probably doesn't.
 	    
-	    
-	    
-	    if (s.getVelocity() == 0)
+	    //HIDEOUS HACK
+	    if (s.getVelocity() == 0) // Sometimes, he'll hit a wall but not within the confines of the corners. This'll just fix that a little.
 	    {
-	    	s.back(90);
+	    	s.back(100);
 	    }
 	}
-	
 
 	@Override    
 	public void onScannedRobot_(solomon s, ScannedRobotEvent e)
 	{
-	   fire(s, e.getDistance());
+	   fire(s, e.getDistance()); // Really simple. Just fires.
 	}
 	
 	@Override
